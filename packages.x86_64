@@ -2,11 +2,13 @@ alsa-utils
 amd-ucode
 arch-install-scripts
 archinstall
+archlinux-keyring
 b43-fwcutter
 base
 bind
 broadcom-wl
 btrfs-progs
+# ckbcomp
 clonezilla
 cryptsetup
 darkhttpd
@@ -26,6 +28,9 @@ exfatprogs
 f2fs-tools
 fatresize
 fsarchiver
+git
+gnome
+gnome-session
 gnu-netcat
 gpart
 gpm
@@ -44,6 +49,7 @@ linux-firmware
 linux-firmware-marvell
 livecd-sounds
 lsscsi
+# LUGOS-repo/calamares
 lvm2
 lynx
 man-db
@@ -54,6 +60,7 @@ memtest86+-efi
 mkinitcpio
 mkinitcpio-archiso
 mkinitcpio-nfs-utils
+# mkinitcpio-openswap
 modemmanager
 mtools
 nano
@@ -71,6 +78,7 @@ parted
 partimage
 pcsclite
 pv
+python-pipx
 refind
 reflector
 rsync
@@ -78,6 +86,7 @@ sg3_utils
 smartmontools
 sof-firmware
 squashfs-tools
+starship
 sudo
 syslinux
 systemd-resolvconf
@@ -91,8 +100,11 @@ usb_modeswitch
 usbmuxd
 usbutils
 vim
-wezterm-terminfo
 wireless-regdb
 wireless_tools
 wpa_supplicant
+xorg
+xorg-server
+xorg-xrandr
+yay-bin
 zsh
