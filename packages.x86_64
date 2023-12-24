@@ -8,6 +8,7 @@ base
 bind
 broadcom-wl
 btrfs-progs
+calamares
 # ckbcomp
 clonezilla
 cryptsetup

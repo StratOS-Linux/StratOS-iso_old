@@ -1,0 +1,3 @@
+[submodule "airootfs/usr/share/grub/themes/LUGOS-grub"]
+	path = airootfs/usr/share/grub/themes/LUGOS-grub
+	url = https://github.com/lugvitc/LUGOS-grub

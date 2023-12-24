@@ -1,0 +1,6 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Set LugOS background
+Version=1.0
+Terminal=true
+Exec=gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/lugos-wallpaper.png && gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/lugos-wallpaper.png # change later

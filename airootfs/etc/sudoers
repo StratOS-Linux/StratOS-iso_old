@@ -1,1 +1,3 @@
 lugos ALL=(ALL) ALL
+%wheel ALL=(ALL) NOPASSWD: ALL
+Defaults env_reset, pwfeedback, timestamp_timeout=30
