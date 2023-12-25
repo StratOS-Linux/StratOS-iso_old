@@ -8,4 +8,4 @@ Name=Set LugOS background
 Comment=Set LugOS background
 Encoding=UTF-8
 Version=1.0
-Terminal=true
+Terminal=false
