@@ -1,6 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Name=Set LugOS background
-Version=1.0
-Terminal=false
-Exec=gsettings set org.gnome.desktop.background picture-uri-dark file:///usr/share/backgrounds/lugos-wallpaper.png

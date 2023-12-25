@@ -1,0 +1,9 @@
+[Unit]
+Description=Set GNOME wallpaper
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/set-gnome-wallpaper
+
+[Install]
+WantedBy=multi-user.target

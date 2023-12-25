@@ -2,7 +2,8 @@
 [org/gnome/desktop/background]
 
 # Specify the path to the desktop background image file
-picture-uri='file:///usr/share/backgrounds/lugos-wallpaper.png'
+picture-uri='file:///usr/share/backgrounds/LUG-wallpaper-l.png'
+picture-uri-dark='file:///usr/share/backgrounds/LUG-wallpaper-d.png'
 
 # Specify one of the rendering options for the background image:
 picture-options='scaled'
