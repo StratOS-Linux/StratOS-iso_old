@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Exec=bash /usr/local/bin/set-gnome-wallpaper
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=Set LugOS background
+Comment=Set LugOS background
+Encoding=UTF-8
+Version=1.0
+Terminal=true
