@@ -1,7 +1,7 @@
 #!/bin/env bash
 gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/LUG-wallpaper-l.png
 gsettings set org.gnome.desktop.background picture-uri-dark file:///usr/share/backgrounds/LUG-wallpaper-d.png
-
+# gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrainsMonoNL Nerd Font Mono 14' # required ttf-jetbrains-mono-nerd from AUR
 # Other settings
 gsettings set org.gnome.desktop.interface gtk-theme "'gruvbox-dark-gtk'" # submodule
 gsettings set org.gnome.desktop.interface icon-theme "'gruvbox-dark-icons-gtk'" # submodule
