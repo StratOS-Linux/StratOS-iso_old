@@ -40,13 +40,13 @@ Use gammaray
  */
 
 #mainApp {
-    color: #d7d7d7;
-    background-color: #282c34;
+    color: #fbf1c7;
+    background-color: #665c54;
 }
 
 #sidebarApp {
-    color: #d7d7d7;
-    background-color: #282c34;
+    color: #fbf1c7;
+    background-color: #665c54;
 }
 #logoApp { 
     background: none;
@@ -70,63 +70,63 @@ Use gammaray
 
 QWidget {
     font: 16px;
-    color: #d7d7d7;
-    background-color: #282c34;
+    color: #fbf1c7;
+    background-color: #665c54;
 }
 
 QLineEdit {
     font: 16px;
-    color: #d7d7d7;
-    background-color: #202328;
+    color: #fbf1c7;
+    background-color: #282828;
 }
 
 QListView {
     font: 16px;
-    color: #d7d7d7;
-    alternate-background-color: #1d1d1d;
-    background-color: #202328;
+    color: #fbf1c7;
+    alternate-background-color: #1d2021;
+    background-color: #282828;
 }
 
 QPushButton {
     font: 16px;
-    color: #d7d7d7;
-    background-color: #282c34;
-    border-color: #202328;
+    color: #fbf1c7;
+    background-color: #665c54;
+    border-color: #282828;
     border-width: 1px;
 }
 
 QToolTip {
     font: 16px;
-    color: #d7d7d7;
-    background-color: #1c1f24;
+    color: #fbf1c7;
+    background-color: #32302f;
     border: none;
 }
 
 QTreeView {
     font: 16px;
-    color: #d7d7d7;
-    alternate-background-color: #1d1d1d;
-    background-color: #202328;
+    color: #fbf1c7;
+    alternate-background-color: #1d2021;
+    background-color: #282828;
 }
 
 #layoutSelector {
     font: 16px;
-    color: #d7d7d7;
-    selection-background-color: #1c1f24;
+    color: #fbf1c7;
+    selection-background-color: #32302f;
 }
 
 #variantSelector {
     font: 16px;
-    color: #d7d7d7;
-    selection-background-color: #1c1f24;
+    color: #fbf1c7;
+    selection-background-color: #32302f;
 }
 
 #scrollAreaWidgetContents {
-    color: #d7d7d7;
+    color: #fbf1c7;
 }
 
 #defineInfoLabel { 
-    color: #d7d7d7;
+    color: #fbf1c7;
 }
 
 /*
