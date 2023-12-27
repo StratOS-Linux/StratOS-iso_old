@@ -2,11 +2,11 @@
 # shellcheck disable=SC2034
 
 iso_name="lugos"
-iso_label="lugos_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m)"
+iso_label="LUGOS_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m)"
 iso_publisher="LUGVITC <https://lugvitc.org>"
 iso_application="Live ISO for LUGVITC's Linux distro"
 iso_version="$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)"
-install_dir="lugos"
+install_dir="arch"
 buildmodes=('iso')
 bootmodes=('bios.syslinux.mbr' 'bios.syslinux.eltorito'
            'uefi-ia32.grub.esp' 'uefi-x64.grub.esp'
@@ -24,4 +24,6 @@ file_permissions=(
   ["/usr/local/bin/choose-mirror"]="0:0:755"
   ["/usr/local/bin/Installation_guide"]="0:0:755"
   ["/usr/local/bin/livecd-sound"]="0:0:755"
+  ["/usr/local/bin/lugos-config-gnome"]="0:0:755"
+  ["/usr/local/bin/lugos-configure-bedrock"]="0:0:755"
 )

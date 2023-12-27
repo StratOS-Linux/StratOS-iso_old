@@ -10,3 +10,6 @@
 [submodule "airootfs/etc/skel/.icons/gruvbox-dark-icons-gtk"]
 	path = airootfs/etc/skel/.icons/gruvbox-dark-icons-gtk
 	url = https://github.com/jmattheis/gruvbox-dark-icons-gtk
+[submodule "airootfs/etc/calamares"]
+	path = airootfs/etc/calamares
+	url = https://github.com/zstg/calamares-conf

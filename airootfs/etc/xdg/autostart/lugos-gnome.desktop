@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=bash /usr/local/bin/set-gnome-wallpaper
+Exec=bash /usr/local/bin/lugos-configure-gnome
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
