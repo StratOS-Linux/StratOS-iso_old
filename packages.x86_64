@@ -53,6 +53,8 @@ linux-firmware-marvell
 livecd-sounds
 lsscsi
 # LUGOS-repo/calamares
+lugfetch
+lugpkg
 lvm2
 lynx
 man-db
