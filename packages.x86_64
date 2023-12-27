@@ -107,6 +107,7 @@ usbutils
 vim
 wireless-regdb
 wireless_tools
+wget
 wpa_supplicant
 xorg
 xorg-server

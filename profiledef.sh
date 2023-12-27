@@ -24,6 +24,6 @@ file_permissions=(
   ["/usr/local/bin/choose-mirror"]="0:0:755"
   ["/usr/local/bin/Installation_guide"]="0:0:755"
   ["/usr/local/bin/livecd-sound"]="0:0:755"
-  ["/usr/local/bin/lugos-config-gnome"]="0:0:755"
-  ["/usr/local/bin/lugos-configure-bedrock"]="0:0:755"
+  ["/usr/local/bin/lugos-config-gnome"]="0:0:777"
+  ["/usr/local/bin/lugos-configure-bedrock"]="0:0:777"
 )
