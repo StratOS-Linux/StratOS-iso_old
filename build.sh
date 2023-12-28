@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 echo "Cleaning up..."
-sudo rm -rf ./output
+sudo mv ./output ./output.bak
 echo "Initializing ISO"
 sudo mkarchiso -v \
      -w output \
