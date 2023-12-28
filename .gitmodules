@@ -7,9 +7,9 @@
 [submodule "airootfs/etc/skel/.icons/gruvbox-dark-icons-gtk"]
 	path = airootfs/etc/skel/.icons/gruvbox-dark-icons-gtk
 	url = https://github.com/jmattheis/gruvbox-dark-icons-gtk
-[submodule "airootfs/etc/calamares"]
-	path = airootfs/etc/calamares
-	url = https://github.com/zstg/calamares-conf
 [submodule "airootfs/usr/share/grub/themes/LUGOS-grub"]
 	path = airootfs/usr/share/grub/themes/LUGOS-grub
 	url = https://github.com/lugvitc/LUGOS-grub
+[submodule "airootfs/etc/calamares"]
+	path = airootfs/etc/calamares
+	url = https://github.com/lugvitc/LugOS-calamares-settings
