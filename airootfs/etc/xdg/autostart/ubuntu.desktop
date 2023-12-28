@@ -1,11 +1,11 @@
 [Desktop Entry]
 Type=Application
-Exec=bash /usr/local/bin/lugos-configure-gnome
+Exec=bash /usr/local/bin/lugos-configure-ubuntu
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
-Name=Set LugOS background
-Comment=Set LugOS background
+Name=Bootstrap Ubuntu on LugOS
+Comment=Bootstrap Ubuntu on LugOS
 Encoding=UTF-8
 Version=1.0
 Terminal=false
