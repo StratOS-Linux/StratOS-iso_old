@@ -3,20 +3,5 @@
 # INSTALL BEDROCK
 echo "Setting up Bedrock!"
 cd /var/tmp
-curl -sSL https://github.com/bedrocklinux/bedrocklinux-userland/releases/download/0.7.29/bedrock-linux-0.7.29-x86_64.sh  > ./install-bedrock
-chmod +x ./install-bedrock
-echo 'Not reversible!' | sudo ./install-bedrock --hijack
-
-
-# BOOTSTRAP KALI
-echo "Setting up Kali!"
-mkdir -p KALI
-cd KALI
-wget https://github.com/EXALAB/Anlinux-Resources/raw/master/Rootfs/Kali/amd64/kali-rootfs-amd64.tar.xz -O kali.tar.xz
-tar xvf kali.tar.xz
-rm -f kali.tar.xz kali-rootfs-amd64.tar.xz
-tar cf ../kali.tar ./
-
-
-# rm -rf /var/tmp/install-bedrock
-# rm -rf /var/tmp/KALI
+# curl -sSL https://github.com/bedrocklinux/bedrocklinux-userland/releases/download/0.7.29/bedrock-linux-0.7.29-x86_64.sh  > ./install-bedrock
+echo 'Not reversible!' | sudo bash /usr/local/bin/install-bedrock-x86_64 --hijack

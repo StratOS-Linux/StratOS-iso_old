@@ -5,6 +5,7 @@ archinstall
 archlinux-keyring
 b43-fwcutter
 base
+base-devel
 bind
 bibata-cursor-theme
 broadcom-wl
@@ -103,6 +104,7 @@ terminus-font
 testdisk
 tpm2-tools
 tpm2-tss
+ttf-jetbrains-mono-nerd
 udftools
 usb_modeswitch
 usbmuxd
