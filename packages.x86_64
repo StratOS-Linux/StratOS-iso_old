@@ -12,6 +12,7 @@ broadcom-wl
 btrfs-progs
 calamares
 # ckbcomp
+chromium
 clonezilla
 cryptsetup
 darkhttpd
@@ -33,8 +34,31 @@ f2fs-tools
 fatresize
 fsarchiver
 git
-gnome
+
+# GNOME-related packages
+# gnome
+gdm
+gnome-backgrounds
+gnome-characters
+gnome-color-manager
+gnome-console
+gnome-control-center
+gnome-font-viewer
+gnome-keyring
+gnome-screenshot
 gnome-session
+gnome-settings-daemon
+gnome-shell
+gnome-shell-extensions
+gnome-tour
+gnome-user-share
+nautilus
+loupe
+xdg-desktop-portal-gnome
+xdg-user-dirs-gtk
+
+
+
 gnu-netcat
 gpart
 gpm

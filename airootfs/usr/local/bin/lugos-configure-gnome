@@ -13,3 +13,16 @@ gsettings set org.gnome.desktop.interface cursor-theme "'Bibata-Modern-Classic'"
 # for GTK4 apps, refer etc/skel/.config/gtk-4.0/
 
 gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
+
+extensions=(
+     # widgets@Aylur
+     blur-my-shell@Aunetx
+     burn-my-windows@schneegans.github.com  
+     dash-to-dock@micxgx.gmail.com 	     
+     just-perfection@alexram1313
+     logomenu@aryan_k 
+     forge@jmmaranan.com 
+     space-bar@luchrioh 
+     top-bar-organizer@julian.gse.jsts.xyz 
+     user-theme@gnome-shell-extensions.gcampax.github.com
+)
