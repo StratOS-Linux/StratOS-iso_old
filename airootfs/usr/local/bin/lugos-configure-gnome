@@ -1,5 +1,17 @@
 #!/bin/env bash
-gnome-extensions enable user-theme@gnome-shell-extensions.gcampax.com
+extensions=(
+    user-theme@gnome-shell-extensions.gcampax.github.com
+    blur-my-shell@aunetx
+    # burn-my-windows@schneegans.github.com
+    dash-to-dock@micxgx.gmail.com
+    # forge@jmmaranan.com
+    logomenu@aryan_k
+    space-bar@luchrioh
+)
+
+for i in ${extensions[@]}; do
+    gnome-extensions enable $i >/dev/null
+done
 gsettings set org.gnome.shell.extensions.user-theme name "'Gruvbox-Dark-B'"
 gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/LUG-wallpaper-l.png
 gsettings set org.gnome.desktop.background picture-uri-dark file:///usr/share/backgrounds/LUG-wallpaper-d.png
@@ -7,27 +19,10 @@ gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrainsMonoNF 1
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark # System dark theme
 
 # Other settings
-# these work for GTK3 apps ONLY
+# These work for GTK3 apps ONLY
 gsettings set org.gnome.desktop.interface gtk-theme "'Gruvbox-Dark-B'" # submodule
 gsettings set org.gnome.desktop.interface icon-theme "'Gruvbox-Dark'" # submodule
 gsettings set org.gnome.desktop.interface cursor-theme "'Bibata-Modern-Classic'" # lugos-repo package
-# for GTK4 apps, refer etc/skel/.config/gtk-4.0/
+# For GTK4 apps, refer etc/skel/.config/gtk-4.0/
 
 gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
-
-extensions=(
-     # widgets@Aylur
-     blur-my-shell@Aunetx
-     burn-my-windows@schneegans.github.com  
-     dash-to-dock@micxgx.gmail.com 	     
-     just-perfection@alexram1313
-     logomenu@aryan_k 
-     forge@jmmaranan.com 
-     space-bar@luchrioh 
-     top-bar-organizer@julian.gse.jsts.xyz 
-)
-
-for i in ${extensions[@]}; do
-    gext -F install $i >/dev/null
-    gext enable $i
-done
