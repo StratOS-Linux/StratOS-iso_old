@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+lugfetch &>/dev/null
 bash /usr/local/bin/lugos-configure-gnome
 if [[ -d /bedrock ]]; then
     notify-send "Bootstrapping Ubuntu..."
