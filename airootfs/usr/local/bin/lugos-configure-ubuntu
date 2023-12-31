@@ -6,8 +6,8 @@ if [[ -d /bedrock ]]; then
     pkexec /bedrock/bin/brl fetch ubuntu
     notify-send "Cleaning up..."
     pkexec sed 's/timeout = 30/timeout = 0/g' -i /bedrock/etc/bedrock.conf
-    pkexec rm -f /usr/local/bin/lugos-** /etc/xdg/autostart/{lugos-gnome,ubuntu}.desktop
+    pkexec rm -f /etc/xdg/autostart/{lugos-gnome,ubuntu}.desktop /usr/local/bin/lugos-**
     sudo apt update
     sudo apt -y upgrade
-    notify-send 'Ubuntu bootstrapped succesfully.'
+    notify-send 'Ubuntu bootstrapped successfully.'
 fi
