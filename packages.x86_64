@@ -114,7 +114,7 @@ pv
 python-pipx
 refind
 reflector
-# rsync
+rsync
 sg3_utils
 smartmontools
 sof-firmware
