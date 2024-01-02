@@ -1,15 +1,9 @@
 [submodule "airootfs/etc/skel/.config/nvim"]
 	path = airootfs/etc/skel/.config/nvim
 	url = https://github.com/lugvitc/LUGOS-nvim-config.git
-[submodule "airootfs/etc/skel/.themes/gruvbox-dark-gtk"]
-	path = airootfs/etc/skel/.themes/gruvbox-dark-gtk
-	url = https://github.com/jmattheis/gruvbox-dark-gtk
-[submodule "airootfs/etc/skel/.icons/gruvbox-dark-icons-gtk"]
-	path = airootfs/etc/skel/.icons/gruvbox-dark-icons-gtk
-	url = https://github.com/jmattheis/gruvbox-dark-icons-gtk
-[submodule "airootfs/usr/share/grub/themes/LUGOS-grub"]
-	path = airootfs/usr/share/grub/themes/LUGOS-grub
-	url = https://github.com/lugvitc/LUGOS-grub
 [submodule "airootfs/etc/calamares"]
 	path = airootfs/etc/calamares
 	url = https://github.com/lugvitc/LugOS-calamares-settings
+[submodule "airootfs/usr/share/grub/themes/LUGOS-grub"]
+	path = airootfs/usr/share/grub/themes/LUGOS-grub
+	url = https://github.com/lugvitc/LUGOS-grub

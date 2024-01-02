@@ -3,19 +3,19 @@ amd-ucode
 arch-install-scripts
 archinstall
 archlinux-keyring
-b43-fwcutter
+# b43-fwcutter
 base
 base-devel
 bind
 bibata-cursor-theme
 broadcom-wl
-btrfs-progs
+# btrfs-progs
 calamares
 # ckbcomp
 chromium
-clonezilla
-cryptsetup
-darkhttpd
+# clonezilla
+# cryptsetup
+# darkhttpd
 dbus
 ddrescue
 dhclient
@@ -81,7 +81,7 @@ lsscsi
 lugfetch
 lugpkg
 lvm2
-lynx
+# lynx
 man-db
 man-pages
 mdadm
@@ -101,20 +101,20 @@ networkmanager
 nfs-utils
 nilfs-utils
 ntfs-3g
-nvme-cli
+# nvme-cli
 open-iscsi
 open-vm-tools
 openssh
 os-prober
 partclone
-parted
+# parted
 partimage
 pcsclite
 pv
 python-pipx
 refind
 reflector
-rsync
+# rsync
 sg3_utils
 smartmontools
 sof-firmware
@@ -126,20 +126,19 @@ systemd-resolvconf
 tcpdump
 terminus-font
 testdisk
-tpm2-tools
-tpm2-tss
+# tpm2-tools
+# tpm2-tss
 ttf-jetbrains-mono-nerd
 udftools
 usb_modeswitch
 usbmuxd
 usbutils
-vim
+# vim
 wireless-regdb
 wireless_tools
 wget
 wpa_supplicant
 xorg
 xorg-server
-xorg-xrandr
 yay-bin
 # zsh
