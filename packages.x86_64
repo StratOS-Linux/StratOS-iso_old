@@ -113,7 +113,7 @@ pcsclite
 pv
 python-pipx
 refind
-reflector
+# reflector
 rsync
 sg3_utils
 smartmontools
