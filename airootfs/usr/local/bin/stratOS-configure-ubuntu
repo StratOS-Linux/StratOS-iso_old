@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 lugfetch &>/dev/null
-bash /usr/local/bin/lugos-configure-gnome
+bash /usr/local/bin/stratOS-configure-gnome
 if [[ -d /bedrock ]]; then
     notify-send "Bootstrapping Ubuntu..."
     pkexec /bedrock/bin/brl fetch ubuntu
