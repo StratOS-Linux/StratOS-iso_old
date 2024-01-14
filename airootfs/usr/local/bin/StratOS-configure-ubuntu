@@ -1,12 +1,18 @@
 #!/usr/bin/env bash
 lugfetch &>/dev/null
-bash /usr/local/bin/stratOS-configure-gnome
+bash /usr/local/bin/StratOS-configure-gnome
+ping -c 2 gnu.org
+if [[ $? -ne 0 ]]; then
+    notify-send "No internet connection found. This script will execute when the device is connected to the internet. Exiting."
+    exit 1
+fi
+
 if [[ -d /bedrock ]]; then
     notify-send "Bootstrapping Ubuntu..."
     pkexec /bedrock/bin/brl fetch ubuntu
     notify-send "Cleaning up..."
     pkexec sed 's/timeout = 30/timeout = 0/g' -i /bedrock/etc/bedrock.conf
-    pkexec rm -f /etc/xdg/autostart/{lugos-gnome,ubuntu}.desktop /usr/local/bin/lugos-**
+    pkexec rm -f /etc/xdg/autostart/ubuntu.desktop /usr/local/bin/StratOS-**
     sudo apt update
     sudo apt -y upgrade
     notify-send 'Ubuntu bootstrapped successfully.'
