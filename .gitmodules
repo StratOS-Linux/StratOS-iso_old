@@ -1,9 +1,12 @@
-[submodule "airootfs/etc/skel/.config/nvim"]
-	path = airootfs/etc/skel/.config/nvim
-	url = https://github.com/lugvitc/LUGOS-nvim-config.git
 [submodule "airootfs/etc/calamares"]
 	path = airootfs/etc/calamares
-	url = https://github.com/lugvitc/LugOS-calamares-settings
-[submodule "airootfs/usr/share/grub/themes/LUGOS-grub"]
-	path = airootfs/usr/share/grub/themes/LUGOS-grub
-	url = https://github.com/lugvitc/LUGOS-grub
+	url = https://github.com/lugvitc/StratOS-calamares-settings
+[submodule "airootfs/usr/share/grub/themes/StratOS-grub"]
+	path = airootfs/usr/share/grub/themes/StratOS-grub
+	url = https://github.com/lugvitc/StratOS-grub
+[submodule "airootfs/etc/skel/.config/nvim"]
+	path = airootfs/etc/skel/.config/nvim
+	url = https://github.com/lugvitc/StratVim
+[submodule "airootfs/usr/share/backgrounds/StratOS"]
+	path = airootfs/usr/share/backgrounds/StratOS
+	url = https://github.com/lugvitc/StratOS-wallpapers

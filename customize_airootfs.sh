@@ -1,4 +1,4 @@
-chown lugos:lugos /home/lugos/.xinitrc
+chown stratos:stratos /home/stratos/.xinitrc
 pacman-key --init
 pacman-key --populate archlinux
 pacman -Syuu
@@ -63,18 +63,18 @@ yay -S  ttf-jetbrains-mono-nerd --noconfirm --needed
 gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrainsMonoNL Nerd Font Mono 14'
 
 mkdir -p /usr/share/grub/themes/
-if [ ! -d "/var/tmp/LUGOS-grub" ]; then
-  git clone https://github.com/lugvitc/LUGOS-grub.git /var/tmp/LUGOS-grub
-  sudo cp /var/tmp/LUGOS-grub/LUGOS-grub -r /usr/share/grub/themes/
+if [ ! -d "/var/tmp/STRATOS-grub" ]; then
+  git clone https://github.com/lugvitc/STRATOS-grub.git /var/tmp/STRATOS-grub
+  sudo cp /var/tmp/STRATOS-grub/STRATOS-grub -r /usr/share/grub/themes/
 fi
 cd -
 
-# sudo sed -i '47s/.*/GRUB_THEME="\/usr\/share\/grub\/themes\/LUGOS-grub\/theme.txt"/' /etc/default/grub
-# sudo sed -i 's/^GRUB_THEME/GRUB_THEME="\/usr\/share\/grub\/themes\/LUGOS-grub\/theme.txt"/' /etc/default/grub
-echo GRUB_THEME="./airootfs/usr/share/grub/themes/LUGOS-grub/theme.txt" | sudo tee -a /etc/default/grub
+# sudo sed -i '47s/.*/GRUB_THEME="\/usr\/share\/grub\/themes\/STRATOS-grub\/theme.txt"/' /etc/default/grub
+# sudo sed -i 's/^GRUB_THEME/GRUB_THEME="\/usr\/share\/grub\/themes\/STRATOS-grub\/theme.txt"/' /etc/default/grub
+echo GRUB_THEME="./airootfs/usr/share/grub/themes/STRATOS-grub/theme.txt" | sudo tee -a /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 # this SHOULD output
-# Found theme: /usr/share/grub/themes/LUGOS-grub/theme.txt   
+# Found theme: /usr/share/grub/themes/STRATOS-grub/theme.txt   
 
 # GNOME EXTENSIONS CONFIGURATION
 dconf write /org/gnome/shell/extensions/burn-my-windows/tv-glitch-enable-effect true
@@ -91,5 +91,5 @@ gsettings set org.gnome.shell disable-user-extensions false
 yay -S libadwaita-without-adwaita-git --noconfirm --needed
 yay -Rns $(yay -Qtdq) --noconfirm
 sudo pacman -S neovim nodejs npm --noconfirm --needed
-git clone https://github.com/lugvitc/LUGOS-nvim-config.git ~/.config/nvim
+git clone https://github.com/lugvitc/STRATOS-nvim-config.git ~/.config/nvim
 COMMENT
