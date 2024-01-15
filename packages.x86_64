@@ -68,6 +68,8 @@ hdparm
 intel-ucode
 iw
 iwd
+kpmcore
+lazygit
 less
 libfido2
 libusb-compat
@@ -100,6 +102,7 @@ neovim
 networkmanager
 nfs-utils
 nilfs-utils
+npm
 ntfs-3g
 # nvme-cli
 open-iscsi

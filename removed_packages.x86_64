@@ -9,6 +9,7 @@ hyperv
 irssi
 jfsutils
 kitty-terminfo
+kpmcore
 lftp
 mc
 open-iscsi
@@ -16,6 +17,7 @@ open-vm-tools
 openconnect
 openpgp-card-tools
 openvpn
+gnome-tour
 ppp
 pptpclient
 pv
