@@ -1,17 +1,18 @@
+#starship preset tokyo-night > ~/.dotfiles/Starship/starship.toml -> gives the default tokyo night scheme
 format = """
-[░▒▓](#d65d03)\
-[ 󰍲 ](bg:#d79921 fg:#fbf1c7)\
-[](bg:#d5c4a1 fg:#d79921)\
+[░▒▓](#a3aed2)\
+[ 󰻀 ](bg:#a3aed2 fg:#090c0c)\
+[](bg:#769ff0 fg:#a3aed2)\
 $directory\
-[](fg:#d5c4a1 bg:#8ec07c)\
+[](fg:#769ff0 bg:#394260)\
 $git_branch\
 $git_status\
-[](fg:#8ec07c bg:#3c3836)\
+[](fg:#394260 bg:#212736)\
 $nodejs\
 $cmd_duration\
-[](fg:#3c3836 bg:#282828)\
+[](fg:#212736 bg:#1d2230)\
 $python\
-[ ](fg:#282828)\
+[ ](fg:#1d2230)\
 """
 # $character"""
 #\n$character"""
@@ -19,7 +20,7 @@ $python\
 command_timeout=3000
 
 [directory]
-style = "fg:#3c3836 bg:#d5c4a1"
+style = "fg:#e3e5e5 bg:#769ff0"
 format = "[ $path ]($style)"
 #truncation_length = 3
 #truncation_symbol = "…/"
@@ -35,39 +36,39 @@ format = "[ $path ]($style)"
 
 [git_branch]
 symbol = ""
-style = "bg:#8ec07c"
-format = '[[ $symbol $branch ](fg:#fbf1c7 bg:#8ec07c)]($style)'
+style = "bg:#394260"
+format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
 
 [git_status]
-style = "bg:#8ec07c"
-format = '[[($all_status$ahead_behind )](fg:#fbf1c7 bg:#8ec07c)]($style)'
+style = "bg:#394260"
+format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:#282828"
-format = '[[ $symbol ($version) ](fg:#d5c4a1 bg:#282828)]($style)'
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [rust]
 symbol = ""
-style = "bg:#282828"
-format = '[[ $symbol ($version) ](fg:#d5c4a1 bg:#282828)]($style)'
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [golang]
 symbol = "ﳑ"
-style = "bg:#282828"
-format = '[[ $symbol ($version) ](fg:#d5c4a1 bg:#282828)]($style)'
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [php]
 symbol = ""
-style = "bg:#282828"
-format = '[[ $symbol ($version) ](fg:#d5c4a1 bg:#282828)]($style)'
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [python]
 symbol = ""
-style = "bg:#282828"
-format = '[[ $symbol ($version) ](fg:#d5c4a1 bg:#282828)]($style)'
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#1d2230)]($style)'
 
 [cmd_duration]
 disabled = false
 style = "bg:#1d2230"
-format = '[[  $duration ](fg:#d5c4a1 bg:#282828)]($style)'
+format = '[[  $duration ](fg:#769ff0 bg:#212736)]($style)'
