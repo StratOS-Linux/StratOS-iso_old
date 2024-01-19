@@ -12,7 +12,7 @@ broadcom-wl
 # btrfs-progs
 calamares
 # ckbcomp
-chromium
+# chromium
 # clonezilla
 # cryptsetup
 # darkhttpd
@@ -41,7 +41,6 @@ gdm
 gnome-backgrounds
 gnome-characters
 gnome-color-manager
-gnome-console
 gnome-control-center
 gnome-font-viewer
 gnome-keyring
@@ -50,6 +49,11 @@ gnome-session
 gnome-settings-daemon
 gnome-shell
 gnome-shell-extensions
+# gnome-software
+gnome-system-monitor
+gedit
+gnome-terminal
+# gnome-text-editor
 gnome-tour
 gnome-user-share
 nautilus
@@ -73,6 +77,7 @@ lazygit
 less
 libfido2
 libusb-compat
+licenses
 linux
 linux-atm
 linux-firmware

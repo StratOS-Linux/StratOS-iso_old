@@ -13,7 +13,7 @@ if [[ -d /bedrock ]]; then
     notify-send "Cleaning up..."
     pkexec sed 's/timeout = 30/timeout = 0/g' -i /bedrock/etc/bedrock.conf
     pkexec rm -f /etc/xdg/autostart/ubuntu.desktop /usr/local/bin/StratOS-**
-    sudo apt update
-    sudo apt -y upgrade
+    # sudo apt update
+    # sudo apt -y upgrade
     notify-send 'Ubuntu bootstrapped successfully.'
 fi
