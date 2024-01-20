@@ -25,7 +25,9 @@ file_permissions=(
   ["/usr/local/bin/Installation_guide"]="0:0:755"
   ["/usr/local/bin/livecd-sound"]="0:0:755"
   ["/usr/local/bin/StratOS-configure-gnome"]="0:0:777"
+  ["/usr/local/bin/StratOS-configure-theme"]="0:0:777"
   ["/usr/local/bin/StratOS-configure-bedrock"]="0:0:777"
+  ["/usr/local/bin/StratOS-configure-browser"]="0:0:777"
   ["/usr/local/bin/StratOS-configure-ubuntu"]="0:0:777"
   ["/usr/local/bin/install-bedrock-x86_64"]="0:0:777"
 )

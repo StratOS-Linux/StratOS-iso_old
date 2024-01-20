@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 lugfetch &>/dev/null
 bash /usr/local/bin/StratOS-configure-gnome
-ping -c 2 gnu.org
-if [[ $? -ne 0 ]]; then
-    notify-send "No internet connection found. This script will execute when the device is connected to the internet. Exiting."
-    exit 1
-fi
-
 if [[ -d /bedrock ]]; then
+    ping -c 1 gnu.org
+    if [[ $? -ne 0 ]]; then
+	notify-send "No internet connection found. This script will execute when the device is connected to the internet. Exiting."
+	exit 1
+    fi
     notify-send "Bootstrapping Ubuntu..."
     pkexec /bedrock/bin/brl fetch ubuntu
     notify-send "Cleaning up..."
