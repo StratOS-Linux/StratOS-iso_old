@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# For GTK4 apps, refer etc/skel/.config/gtk-4.0/
 menu() {
     dialog --clear --backtitle "StratOS theme changer" \
         --title "Select a theme" \
@@ -13,6 +12,7 @@ while true; do
     choice=$(menu)
     case $choice in
         1)
+	    clear
 	    gsettings set org.gnome.shell.extensions.user-theme name "'Tokyonight-Dark-B'"
 	    gsettings set org.gnome.desktop.interface gtk-theme "'Tokyonight-Dark-B'"
 	    gsettings set org.gnome.desktop.interface icon-theme "'Tokyonight-Dark'" 
@@ -20,19 +20,22 @@ while true; do
 	    sudo ln -sf /usr/share/grub/themes/StratOS-grub/tokyonight-dark/theme.txt /usr/share/grub/themes/StratOS-grub/theme.txt
 	    sudo ln -sf /usr/share/grub/themes/StratOS-grub/tokyonight-dark/background.png /usr/share/grub/themes/StratOS-grub/background.png
 	    sudo ln -sf /etc/calamares/branding/tokyonight-dark/stylesheet.qss  /etc/calamares/branding/default/stylesheet.qss  
+	    exit 0
             ;;
         2)
+	    clear
 	    gsettings set org.gnome.shell.extensions.user-theme name "'Gruvbox-Dark-B'"
 	    gsettings set org.gnome.desktop.interface gtk-theme "'Gruvbox-Dark-B'"
 	    gsettings set org.gnome.desktop.interface icon-theme "'Gruvbox-Dark'" 
 	    ln -sf $HOME/.themes/Gruvbox-Dark-B/gtk-4.0/  ~/.config/
 	    sudo ln -sf /usr/share/grub/themes/StratOS-grub/gruvbox/theme.txt /usr/share/grub/themes/StratOS-grub/theme.txt
 	    sudo ln -sf /usr/share/grub/themes/StratOS-grub/gruvbox/background.png /usr/share/grub/themes/StratOS-grub/background.png
-	    sudo ln -sf /etc/calamares/branding/gruvbox/stylesheet.qss  /etc/calamares/branding/default/stylesheet.qss  
+	    sudo ln -sf /etc/calamares/branding/gruvbox/stylesheet.qss  /etc/calamares/branding/default/stylesheet.qss
+	    exit 0
             ;;
         *)
             # If Cancel or Escape pressed
-            echo "Exiting..."
+            # echo "Exiting..."
             exit 0
             ;;
     esac
