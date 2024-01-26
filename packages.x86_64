@@ -11,8 +11,8 @@ bibata-cursor-theme
 broadcom-wl
 # btrfs-progs
 calamares
-# ckbcomp
-# chromium
+ckbcomp
+chromium
 # clonezilla
 # cryptsetup
 # darkhttpd
@@ -86,8 +86,8 @@ linux-firmware-marvell
 livecd-sounds
 lsscsi
 # StratOS-repo/calamares
-lugfetch
-lugpkg
+# lugfetch
+# lugpkg
 lvm2
 # lynx
 man-db
@@ -121,6 +121,8 @@ partimage
 pcsclite
 pv
 python-pipx
+qt5-wayland
+qt6-wayland
 refind
 # reflector
 rsync

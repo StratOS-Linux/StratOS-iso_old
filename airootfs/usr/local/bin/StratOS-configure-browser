@@ -1,35 +1,45 @@
 #!/bin/bash
-
-# Display menu options with checkboxes
 menu() {
-    dialog --clear --backtitle "Linux Distribution Selector" \
-        --title "Select Linux distributions" \
-        --checklist "Choose one or more of the following options:" 15 40 3 \
-        1 "Ubuntu" off \
-        2 "Fedora" off \
+    dialog --clear --backtitle "Browser Selector" \
+        --title "Select a browser" \
+        --menu "Choose one of the following options:" 15 40 3 \
+        1 "Chromium" \
+        2 "Brave" \
+        3 "Librewolf" \
         2>&1 >/dev/tty
 }
 
-# Main loop
+# Made the script more verbose, for the end user.
+
 while true; do
-    # Show menu and capture user choices
-    choices=$(menu)
+    choice=$(menu)
+    case $choice in
+        1)
+            echo "Downloading Chromium..."
+	    yay -S chromium --noconfirm
+	    echo "\n==> Downloaded and Installed Chromium."
+	    xdg-settings set default-web-browser chromium.desktop
+	    echo "\nSetting Default Browser to Chromium: OK"
+            ;;
+        2)
+            echo "Downloading Brave..."
+	    yay -S brave-bin --noconfirm
+	    echo "\n==> Downloaded and Installed Brave."
+	    xdg-settings set default-web-browser brave-browser.desktop
+	    echo "\nSetting Default Browser to Brave: OK"
 
-    # Check the user's choices
-    for choice in $choices; do
-        case $choice in
-            1)
-		sudo brl fetch ubuntu
-                ;;
-            2)
-		sudo brl fetch fedora
-                ;;
-        esac
-    done
+            ;;
+        3)
+            echo "Downloading Librewolf..."
+	    yay -S librewolf-bin --noconfirm
+	    echo "\n==> Downloaded and Installed LibreWolf."
+	    xdg-settings set default-web-browser librewolf.desktop
+	    echo "\nSetting Default Browser to LibreWolf: OK"
 
-    # Check if user pressed Cancel or Escape
-    if [ -z "$choices" ]; then
-        echo "Exiting..."
-        exit 0
-    fi
+            ;;
+        *)
+            echo "Exiting..."
+            exit 0
+            ;;
+    esac
 done

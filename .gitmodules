@@ -10,3 +10,6 @@
 [submodule "airootfs/usr/share/grub/themes/StratOS-grub"]
 	path = airootfs/usr/share/grub/themes/StratOS-grub
 	url = https://github.com/zstg/StratOS-grub
+[submodule "airootfs/opt/stratos-maneki-neko"]
+	path = airootfs/opt/stratos-maneki-neko
+	url = https://github.com/lugvitc/stratos-maneki-neko

@@ -7,12 +7,13 @@ if [[ -d /bedrock ]]; then
 	notify-send "No internet connection found. This script will execute when the device is connected to the internet. Exiting."
 	exit 1
     fi
-    notify-send "Bootstrapping Ubuntu..."
-    pkexec /bedrock/bin/brl fetch ubuntu
-    notify-send "Cleaning up..."
-    pkexec sed 's/timeout = 30/timeout = 0/g' -i /bedrock/etc/bedrock.conf
+    source /opt/maneki/bin/activate
+    /opt/maneki/bin/python /opt/stratos-maneki-neko/main.py
+    # notify-send "Bootstrapping Ubuntu..."
+    # pkexec /bedrock/bin/brl fetch ubuntu
+    # notify-send "Cleaning up..."
     pkexec rm -f /etc/xdg/autostart/ubuntu.desktop /usr/local/bin/StratOS-**
     # sudo apt update
     # sudo apt -y upgrade
-    notify-send 'Ubuntu bootstrapped successfully.'
+    # notify-send 'Ubuntu bootstrapped successfully.'
 fi
