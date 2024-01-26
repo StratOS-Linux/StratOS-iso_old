@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 lugfetch &>/dev/null
 bash /usr/local/bin/StratOS-configure-gnome
+python /opt/maneki-neko/main.py
 if [[ -d /bedrock ]]; then
     ping -c 1 gnu.org
     if [[ $? -ne 0 ]]; then
 	notify-send "No internet connection found. This script will execute when the device is connected to the internet. Exiting."
 	exit 1
     fi
-    source /opt/maneki/bin/activate
-    /opt/maneki/bin/python /opt/stratos-maneki-neko/main.py
     # notify-send "Bootstrapping Ubuntu..."
     # pkexec /bedrock/bin/brl fetch ubuntu
     # notify-send "Cleaning up..."

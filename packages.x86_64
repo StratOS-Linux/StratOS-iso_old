@@ -120,7 +120,7 @@ partclone
 partimage
 pcsclite
 pv
-python-pipx
+python-pyqt5
 qt5-wayland
 qt6-wayland
 refind
