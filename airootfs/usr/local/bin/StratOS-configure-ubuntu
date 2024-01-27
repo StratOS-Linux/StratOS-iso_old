@@ -11,7 +11,7 @@ if [[ -d /bedrock ]]; then
     # notify-send "Bootstrapping Ubuntu..."
     # pkexec /bedrock/bin/brl fetch ubuntu
     # notify-send "Cleaning up..."
-    pkexec rm -f /etc/xdg/autostart/ubuntu.desktop /usr/local/bin/StratOS-**
+    pkexec rm -f /etc/xdg/autostart/ubuntu.desktop
     # sudo apt update
     # sudo apt -y upgrade
     # notify-send 'Ubuntu bootstrapped successfully.'
