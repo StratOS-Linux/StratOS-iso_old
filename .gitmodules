@@ -13,3 +13,6 @@
 [submodule "airootfs/opt/maneki-neko"]
 	path = airootfs/opt/maneki-neko
 	url = https://github.com/zstg/stratOS-maneki-neko
+[submodule "airootfs/calamares"]
+	path = airootfs/calamares
+	url = https://github.com/zstg/StratOS-calamares
