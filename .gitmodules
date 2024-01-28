@@ -1,6 +1,3 @@
-[submodule "airootfs/etc/skel/.config/nvim"]
-	path = airootfs/etc/skel/.config/nvim
-	url = https://github.com/lugvitc/StratVim
 [submodule "airootfs/usr/share/backgrounds/StratOS"]
 	path = airootfs/usr/share/backgrounds/StratOS
 	url = https://github.com/lugvitc/StratOS-wallpapers
@@ -13,3 +10,6 @@
 [submodule "airootfs/etc/calamares"]
 	path = airootfs/etc/calamares
 	url = https://github.com/zstg/StratOS-calamares
+[submodule "airootfs/etc/skel/.config/nvim"]
+	path = airootfs/etc/skel/.config/nvim
+	url = https://github.com/StratOS-Linux/StratVIM.git

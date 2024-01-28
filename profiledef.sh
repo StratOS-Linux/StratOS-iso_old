@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034
 
 iso_name="StratOS"
-iso_label="StratOS_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m)"
+iso_label="STRATOS_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m)"
 iso_publisher="StratOS Team <https://github.com/StratOS-Linux/StratOS>"
 iso_application="StratOS Live ISO"
 iso_version="$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)"
@@ -27,6 +27,7 @@ file_permissions=(
   ["/usr/local/bin/livecd-sound"]="0:0:755"
   ["/usr/local/bin/StratOS-configure-bedrock"]="0:0:777"
   ["/usr/local/bin/StratOS-configure-browser"]="0:0:777"
+  ["/usr/local/bin/StratOS-configure-distro"]="0:0:777"
   ["/usr/local/bin/StratOS-configure-gnome"]="0:0:777"
   ["/usr/local/bin/StratOS-configure-theme"]="0:0:777"
   ["/usr/local/bin/StratOS-configure-ubuntu"]="0:0:777"
