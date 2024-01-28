@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Maneki Neko
+Exec=/usr/local/bin/maneki-neko
+Icon=/opt/maneki-neko/src/png/logo.png
+Comment=StratOS welcome screen
+X-GNOME-Autostart-enabled=true
+Path=/opt/maneki-neko/
+Terminal=false
+StartupNotify=false
