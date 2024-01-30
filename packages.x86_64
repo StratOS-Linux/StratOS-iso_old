@@ -40,6 +40,7 @@ git
 # gnome
 gdm
 gnome-backgrounds
+gnome-browser-connector
 gnome-characters
 gnome-color-manager
 gnome-control-center
@@ -50,6 +51,7 @@ gnome-session
 gnome-settings-daemon
 gnome-shell
 gnome-shell-extensions
+gnome-tweaks
 # gnome-software
 gnome-system-monitor
 gedit
@@ -89,6 +91,8 @@ lsscsi
 # StratOS-repo/calamares
 # lugfetch
 # lugpkg
+rock
+grab
 lvm2
 # lynx
 man-db
