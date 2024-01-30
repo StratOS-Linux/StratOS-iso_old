@@ -52,6 +52,7 @@ gnome-settings-daemon
 gnome-shell
 gnome-shell-extensions
 gnome-tweaks
+mutter
 # gnome-software
 gnome-system-monitor
 gedit
