@@ -12,6 +12,7 @@ broadcom-wl
 # btrfs-progs
 calamares
 ckbcomp
+cmake # for Emacs
 chromium
 # clonezilla
 # cryptsetup
