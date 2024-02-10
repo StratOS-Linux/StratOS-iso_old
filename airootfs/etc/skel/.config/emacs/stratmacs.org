@@ -32,9 +32,18 @@ For the Vim users out there.
   :after evil
   :ensure t
   :config
+  (add-to-list 'evil-collection-mode-list 'help)
   (evil-collection-init))
 (require 'evil-vars)
 (use-package evil-nerd-commenter)
+;; Using RETURN to follow links in Org/Evil 
+;; Unmap keys in 'evil-maps if not done, (setq org-return-follows-link t) will not work
+(with-eval-after-load 'evil-maps
+  (define-key evil-motion-state-map (kbd "SPC") nil)
+  (define-key evil-motion-state-map (kbd "RET") nil)
+  (define-key evil-motion-state-map (kbd "TAB") nil))
+;; Setting RETURN key in org-mode to follow links
+  (setq org-return-follows-link  t)
 #+end_src
 
 * Fonts
@@ -115,13 +124,13 @@ This configures ligatures in Emacs. Note that the font configured in this config
 Themes and configuration ported from [[https://github.com/doomemacs/doomemacs][Doom Emacs]].
 #+begin_src emacs-lisp
 (use-package doom-themes
-  :ensure t)
-
-(setq doom-themes-enable-bold t
-      doom-themes-enable-italic t)
-(load-theme 'doom-tokyo-night t)
-(setq custom-safe-themes t)
-(doom-themes-org-config)
+  :ensure t
+  :config
+  (setq doom-themes-enable-bold t
+        custom-safe-themes t
+        doom-themes-enable-italic t)
+  (load-theme 'doom-vibrant t)
+  (doom-themes-org-config))
 
 (use-package doom-modeline
   :init
@@ -186,7 +195,7 @@ User interface and dashboard settings. Modify these to change the way Stratmacs 
   (setq dashboard-icon-type 'all-the-icons)
   (setq dashboard-set-file-icons t)
   (setq dashboard-banner-logo-title "StratOS' Emacs distribution")
-  ;; (setq dashboard-banner-logo-title "Find file                (SPC .)\nOpen recent files        (SPC f r)")
+  (setq dashboard-banner-logo-title "Open config              (SPC f C)\nFind file                (SPC .)\nOpen recent files        (SPC f r)")
   ;;(setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
   (setq dashboard-startup-banner "~/.config/emacs/logo.png")  ;; use custom image as banner
   (setq dashboard-center-content t) ;; set to 't' for centered content; nil is the default
@@ -224,16 +233,16 @@ Complete-anything (aka Company or Company-mode) is a completion mechanism for Em
 (use-package company
   :custom 
   (setq company-idle-delay 0
-	company-minimum-prefix-length 2))
+        company-minimum-prefix-length 2)
+  :hook
+  (prog-mode . global-company-mode)
+  (prog-mode . company-tng-mode)
+  (prog-mode . electric-pair-mode)
+  (org-src-mode . company-mode))
 ;; (use-package company-box
 ;;  :after company
 ;;  :hook (company-mode . company-box-mode))
-
-(add-hook 'prog-mode-hook 'global-company-mode)
-(add-hook 'prog-mode-hook 'company-tng-mode)
-(add-hook 'prog-mode-hook 'electric-pair-mode)
 ;; (add-to-list 'company-backends 'company-capf)
-(add-hook 'org-src-mode-hook 'company-mode)
 #+end_src
 
 * Vertico,marginalia etc
@@ -265,31 +274,32 @@ overrides `completion-styles' during company completion sessions.")
 * Quickrun, marginalia
 Completion-related changes go here.
 #+begin_src emacs-lisp
-(use-package quickrun)
-(setq quickrun-focus-p nil)
-(add-hook 'quickrun-after-run-hook 'eros-quickrun-show-overlay)
-(add-hook 'quickrun-after-run-hook 'clear-eros-overlays)
-(add-hook 'quickrun-after-run-hook 'quickrun-hide-window-after-execution)
+(use-package quickrun
+  :config
+  (setq quickrun-focus-p nil)
+  :hook (quickrun-after-run . eros-quickrun-show-overlay)
+  :hook (quickrun-after-run . clear-eros-overlays)
+  :hook (quickrun-after-run . quickrun-hide-window-after-execution))
 
 (use-package marginalia
   :after vertico
-  :init
+  :config
   (setq marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
   (marginalia-mode)
-  (with-eval-after-load 'projectile
-    (add-to-list 'marginalia-command-categories '(projectile-find-file . file))))
+  :hook (projectile-find-file . file))
+
 (use-package eros
-  :after quickrun)
-(require 'quickrun)
-(require 'eros)
-(eros-mode 1)
+  :after quickrun
+  :config
+  (require 'eros)
+  (eros-mode   1))
 
 (use-package orderless
   :ensure t
-  :custom
+  :config
   (setq orderless-component-separator 'orderless-escapable-split-on-space)
-  (completion-styles '(orderless basic substring partial-completion flex))
-  (completion-category-overrides '((file (styles basic partial-completion)))))
+  (setq completion-styles '(orderless basic substring partial-completion flex))
+  (setq completion-category-overrides '((file (styles basic partial-completion)))))
 
 #+end_src
 
@@ -339,8 +349,8 @@ Easily one of Emacs' best features, this editor paradigm transforms the editing 
       org-modern-star '("⌬" "⊛" "➤" "▻" "◎" "❂" "⦿" "✦"  "❅" "❇" "◈" "▶" "☢" "☯"  "☮" "☣"))  
 (use-package org-modern
   :hook (org-mode . org-modern-mode))
+;; :hook (org-mode . (lambda () (local-set-key (kbd "TAB") 'org-fold-or-unfold-heading)))
 ;; :config
-;; (add-hook 'org-mode-hook (lambda () (local-set-key (kbd "TAB") 'org-fold-or-unfold-heading)))
 ;; (setq org-modern-star '("⌬" "⊛" "➤" "▻" "◎" "❂" "⦿" "✦"  "❅" "❇" "◈" "▶" "☢" "☯"  "☮" "☣"))
 
 (defadvice org-babel-execute-src-block (around load-language nil activate)
@@ -416,45 +426,49 @@ Easily one of Emacs' best features, this editor paradigm transforms the editing 
 * Misc 
 #+begin_src emacs-lisp
 (setq use-short-answers t ; y/n instead of yes/no
-    xterm-mouse-mode t
-    buffer-face-mode t
-    delete-selection-mode t
-    find-file-visit-truename t
-    browse-url-browser-function 'eww-browse-url
-    initial-scratch-message 'nil ;; dont display "This buffer is for text that is not saved..." nonsense
-    undo-tree-auto-save-history nil
-    backup-directory-alist '((".*" . "~/.local/share/Trash/files"))
-    auto-save-default nil ; set the default file location of auto-saved files to NIL
-    inhibit-automatic-native-compliation t
-    native-comp-enable-subr-trampolines nil
-    confirm-kill-emacs nil ;;prevent ALL quit prompts
-    safe-local-variable-values nil
-    explicit-shell-file-name "/usr/bin/bash"
-    desktop-save-mode nil
-    load-prefer-newer 'noninteractive)
-
-; adding (interactive) to lambdas and functions allows them to be available in the M-x menu
+      xterm-mouse-mode t
+      buffer-face-mode t
+      delete-selection-mode t
+      find-file-visit-truename t
+      browse-url-browser-function 'eww-browse-url
+      initial-scratch-message 'nil ;; dont display "This buffer is for text that is not saved..." nonsense
+      undo-tree-auto-save-history nil
+      backup-directory-alist '((".*" . "~/.local/share/Trash/files"))
+      auto-save-default nil ; set the default file location of auto-saved files to NIL
+      inhibit-automatic-native-compliation t
+      native-comp-enable-subr-trampolines nil
+      confirm-kill-emacs nil ;;prevent ALL quit prompts
+      safe-local-variable-values nil
+      explicit-shell-file-name "/usr/bin/bash"
+      desktop-save-mode nil
+      load-prefer-newer 'noninteractive)
+(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+(global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
+(global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
+					; adding (interactive) to lambdas and functions allows them to be available in the M-x menu
 ;; dtrt-indent link-hint
 ;; (add-hook 'prog-mode-hook 'display-line-numbers)
 (defmacro k-time (&rest body)
-"Measure and return the time it takes evaluating BODY."
-`(let ((time (current-time)))
-    ,@body
-    (float-time (time-since time))))
+  "Measure and return the time it takes evaluating BODY."
+  `(let ((time (current-time)))
+     ,@body
+     (float-time (time-since time))))
 ;; Set garbage collection threshold to 1GB.
-                                    ;(setq gc-cons-threshold #x40000000)
+					;(setq gc-cons-threshold #x40000000)
 
 ;; When idle for 15sec run the GC no matter what.
-                                    ;(defvar k-gc-timer
-                                    ;  (run-with-idle-timer 15 t
-                                    ;                       (lambda ()
-                                    ;                         (message "Garbage Collector has run for %.06fsec"
-                                    ;                                  (k-time (garbage-collect))))))
+					;(defvar k-gc-timer
+					;  (run-with-idle-timer 15 t
+					;                       (lambda ()
+					;                         (message "Garbage Collector has run for %.06fsec"
+					;                                  (k-time (garbage-collect))))))
 (use-package togetherly)
 (use-package htmlize)
 (use-package consult)
 (use-package projectile)
-(use-package rainbow-delimiters)
+(use-package rainbow-delimiters
+  :hook ((prog-mode-hook . rainbow-delimiters-mode)))
 (use-package helpful)
 (use-package undo-tree)
 
@@ -464,24 +478,23 @@ Easily one of Emacs' best features, this editor paradigm transforms the editing 
   :init (global-flycheck-mode))
 
 (use-package which-key
-:init
-(which-key-mode 1)
-:config
-(setq which-key-side-window-location 'bottom
-    which-key-sort-order #'which-key-key-order-alpha
-    which-key-sort-uppercase-first nil
-    which-key-add-column-padding 1
-    which-key-max-display-columns nil
-    which-key-min-display-lines 6
-    which-key-side-window-slot -10
-    which-key-side-window-max-height 0.25
-    which-key-idle-delay 0.8
-    which-key-max-description-length 25
-    which-key-allow-imprecise-window-fit t
-    which-key-separator " → " ))
+  :init
+  (which-key-mode 1)
+  :config
+  (setq which-key-side-window-location 'bottom
+        which-key-sort-order #'which-key-key-order-alpha
+        which-key-sort-uppercase-first nil
+        which-key-add-column-padding 1
+        which-key-max-display-columns nil
+        which-key-min-display-lines 6
+        which-key-side-window-slot -10
+        which-key-side-window-max-height 0.25
+        which-key-idle-delay 0.8
+        which-key-max-description-length 25
+        which-key-allow-imprecise-window-fit t
+        which-key-separator " → " ))
 
 (global-set-key [escape] 'keyboard-escape-quit)
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'evil-local-mode-hook 'turn-on-undo-tree-mode)
 ;; (add-hook 'man-mode-hook '(lambda () (setq mode-line-format nil )))
 (auto-save-mode nil)           ; don't auto save files by default
@@ -493,13 +506,10 @@ Easily one of Emacs' best features, this editor paradigm transforms the editing 
 (let ((default-directory  "~/.config/emacs/lisp/")) (normal-top-level-add-to-load-path '("*")))
 
 (add-hook 'after-save-hook
-        (lambda ()
-        (when (string= (buffer-file-name) user-init-file)
-            (load-file user-init-file)
-            (load-file user-init-file))))
-
-
-
+          (lambda ()
+            (when (string= (buffer-file-name) user-init-file)
+              (load-file user-init-file)
+              (load-file user-init-file))))
 #+end_src
 
 ** Misc functions
@@ -664,16 +674,17 @@ one, an error is signaled."
 * Diff-HL
 This package provides a neat Git diff.
 #+begin_src emacs-lisp
-(use-package diff-hl)
-(add-hook 'prog-mode-hook 'diff-hl-mode)
-(setq diff-hl-fringe-face-function 'diff-hl-fringe-face-from-type)
-;; (setq diff-hl-fringe-bmp-function 'diff-hl-fringe-bmp-from-type)
-
-(diff-hl-flydiff-mode)
-(global-diff-hl-mode 1)
-(add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
-(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
-#+end_src
+(use-package diff-hl
+  :hook
+  (prog-mode . diff-hl-mode)
+  (magit-pre-refresh . diff-hl-magit-pre-refresh)
+  (magit-post-refresh . diff-hl-magit-post-refresh)
+  :config
+  (diff-hl-flydiff-mode)
+  (setq diff-hl-fringe-face-function 'diff-hl-fringe-face-from-type)
+  ;; (setq diff-hl-fringe-bmp-function 'diff-hl-fringe-bmp-from-type)
+  (global-diff-hl-mode 1))
+  #+end_src
 
 * General - package,keybind settings
 All keybind-related config goes here.
@@ -690,7 +701,7 @@ All keybind-related config goes here.
 
 (stratmacs/leader-keys
   "" '(:ignore t :wk "Leader key")
-  "SPC" '(eat :wk "Terminal")
+  "SPC" '(vterm-toggle :wk "Open VTerm")
   "." '(find-file :wk "Find file")
   "=" '(perspective-map :wk "Perspective") ;; Lists all the perspective keybindings
   "TAB TAB" '(comment-line :wk "Comment lines")
@@ -910,17 +921,21 @@ All keybind-related config goes here.
 * Magit
 The very best Git client, period.
 #+begin_src emacs-lisp
-(use-package magit) 
-(magit-auto-revert-mode -1)
+(use-package magit
+  :init
+  (magit-auto-revert-mode -1))
 #+end_src
 
 * Tree-sitter
 #+begin_src emacs-lisp
-; (use-package tree-sitter)
-; (use-package tree-sitter-langs)
-; (add-hook 'tree-sitter-mode-hook 'tree-sitter-hl-mode)
-; (add-hook 'python-mode-hook #'tree-sitter-mode)
-; (add-hook 'sh-mode-hook #'tree-sitter-mode)
+;; (use-package tree-sitter
+;;   :ensure t
+;;   :hook (tree-sitter-mode . tree-sitter-hl-mode))
+
+;; (use-package tree-sitter-langs
+;;   :after tree-sitter
+;;   :hook (python-mode . tree-sitter-mode)
+;;   :hook (sh-mode . tree-sitter-mode))
 #+end_src
 
 * Eglot
@@ -946,6 +961,6 @@ Add Rust support in Emacs.
 * Rainbow mode
 Rainbow mode is used to colourize colour names in buffers.
 #+begin_src emacs-lisp
-(use-package rainbow-mode)
-(add-hook 'prog-mode-hook 'rainbow-mode)
+(use-package rainbow-mode
+  :hook prog-mode)
 #+end_src

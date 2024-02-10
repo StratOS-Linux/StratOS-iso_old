@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 lugfetch &>/dev/null
 bash /usr/local/bin/StratOS-configure-gnome
-python /opt/maneki-neko/main.py
 if [[ -d /bedrock ]]; then
+    python /opt/maneki-neko/main.py # don't execute in the live env
     ping -c 1 gnu.org
     if [[ $? -ne 0 ]]; then
 	notify-send "No internet connection found. This script will execute when the device is connected to the internet. Exiting."
