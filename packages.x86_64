@@ -12,6 +12,7 @@ broadcom-wl
 # btrfs-progs
 calamares
 ckbcomp
+cmake # for Emacs
 chromium
 # clonezilla
 # cryptsetup
@@ -29,6 +30,7 @@ dosfstools
 e2fsprogs
 edk2-shell
 efibootmgr
+emacs # OG
 ethtool
 exfatprogs
 f2fs-tools
