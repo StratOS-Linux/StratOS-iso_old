@@ -20,8 +20,8 @@ gsettings set org.gnome.desktop.interface icon-theme "'Tokyonight-Dark'"
 ln -sf $HOME/.themes/Tokyonight-Dark-B/gtk-4.0/  ~/.config/
 gsettings set org.gnome.desktop.interface cursor-theme "'Bibata-Modern-Classic'" # StratOS-repo package
 # bash /usr/local/bin/StratOS-configure-theme
-gsettings set org.gnome.desktop.background picture-uri-dark file:///usr/share/backgrounds/StratOS/zstg/Stratos-Tokyonight-vectorized-caption.png
-gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/StratOS/zstg/Stratos-Tokyonight-vectorized-caption.png
+gsettings set org.gnome.desktop.background picture-uri-dark file:///usr/share/backgrounds/StratOS/zstg/StratOS-Tokyonight-vectorized-caption.png
+gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/StratOS/zstg/StratOS-Tokyonight-vectorized-caption.png
 gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrainsMonoNF 10'
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark # System dark theme
 gsettings set org.gnome.desktop.interface clock-show-weekday true
