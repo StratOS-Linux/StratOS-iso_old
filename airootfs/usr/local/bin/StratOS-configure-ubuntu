@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-lugfetch &>/dev/null
+grab &>/dev/null
 bash /usr/local/bin/StratOS-configure-gnome
-python /opt/maneki-neko/main.py
 if [[ -d /bedrock ]]; then
+    python /opt/maneki-neko/main.py # don't execute in the live env
     ping -c 1 gnu.org
     if [[ $? -ne 0 ]]; then
 	notify-send "No internet connection found. This script will execute when the device is connected to the internet. Exiting."
@@ -11,7 +11,7 @@ if [[ -d /bedrock ]]; then
     # notify-send "Bootstrapping Ubuntu..."
     # pkexec /bedrock/bin/brl fetch ubuntu
     # notify-send "Cleaning up..."
-    pkexec rm -f /etc/xdg/autostart/ubuntu.desktop
+    rm -f $HOME/.config/autostart/ubuntu.desktop
     # sudo apt update
     # sudo apt -y upgrade
     # notify-send 'Ubuntu bootstrapped successfully.'
