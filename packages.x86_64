@@ -70,6 +70,7 @@ gnu-netcat
 gpart
 gpm
 gptfdisk
+grab
 grub
 hdparm
 intel-ucode
@@ -89,8 +90,6 @@ linux-firmware-marvell
 livecd-sounds
 lsscsi
 # StratOS-repo/calamares
-# lugfetch
-# lugpkg
 lvm2
 # lynx
 man-db
@@ -128,6 +127,7 @@ qt5-wayland
 qt6-wayland
 refind
 # reflector
+rock
 rsync
 sg3_utils
 smartmontools

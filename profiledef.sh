@@ -25,6 +25,7 @@ file_permissions=(
   ["/usr/local/bin/choose-mirror"]="0:0:755"
   ["/usr/local/bin/install-bedrock-x86_64"]="0:0:777"
   ["/usr/local/bin/livecd-sound"]="0:0:755"
+  ["/usr/local/bin/neofetch"]="0:0:777"
   ["/usr/local/bin/StratOS-configure-bedrock"]="0:0:777"
   ["/usr/local/bin/StratOS-configure-browser"]="0:0:777"
   ["/usr/local/bin/StratOS-configure-distro"]="0:0:777"
