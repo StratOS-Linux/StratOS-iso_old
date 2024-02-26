@@ -1,9 +1,6 @@
 [submodule "airootfs/usr/share/backgrounds/StratOS"]
 	path = airootfs/usr/share/backgrounds/StratOS
 	url = https://github.com/lugvitc/StratOS-wallpapers
-[submodule "airootfs/usr/share/grub/themes/StratOS-grub"]
-	path = airootfs/usr/share/grub/themes/StratOS-grub
-	url = https://github.com/zstg/StratOS-grub
 [submodule "airootfs/opt/maneki-neko"]
 	path = airootfs/opt/maneki-neko
 	url = https://github.com/zstg/stratOS-maneki-neko
@@ -16,3 +13,6 @@
 [submodule "airootfs/etc/skel/.config/emacs"]
 	path = airootfs/etc/skel/.config/emacs
 	url = https://github.com/StratOS-Linux/Stratmacs
+[submodule "airootfs/usr/share/grub/themes/StratOS-grub"]
+	path = airootfs/usr/share/grub/themes/StratOS-grub
+	url = https://github.com/StratOS-Linux/StratOS-grub
