@@ -155,4 +155,5 @@ wpa_supplicant
 xorg
 xorg-server
 yay-bin
-# zsh
+zsh
+zsh-syntax-highlighting
