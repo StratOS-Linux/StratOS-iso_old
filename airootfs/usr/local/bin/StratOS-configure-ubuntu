@@ -11,6 +11,7 @@ if [[ -d /bedrock ]]; then
     # notify-send "Bootstrapping Ubuntu..."
     # pkexec /bedrock/bin/brl fetch ubuntu
     # notify-send "Cleaning up..."
+    pkexec sed 's/timeout = 30/timeout = 0/g' -i /bedrock/etc/bedrock.conf # make this change regardless of whether a distro is installed or not
     rm -f $HOME/.config/autostart/ubuntu.desktop
     # sudo apt update
     # sudo apt -y upgrade

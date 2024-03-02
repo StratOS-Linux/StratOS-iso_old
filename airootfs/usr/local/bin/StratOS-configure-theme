@@ -17,8 +17,8 @@ while true; do
 	    gsettings set org.gnome.desktop.interface gtk-theme "'Tokyonight-Dark-B'"
 	    gsettings set org.gnome.desktop.interface icon-theme "'Tokyonight-Dark'" 
 	    ln -sf $HOME/.themes/Tokyonight-Dark-B/gtk-4.0/  ~/.config/
-	    sudo cp -f /usr/share/grub/themes/StratOS-grub/tokyonight-dark/theme.txt /usr/share/grub/themes/StratOS-grub/theme.txt
-	    sudo cp -f /usr/share/grub/themes/StratOS-grub/tokyonight-dark/background.png /usr/share/grub/themes/StratOS-grub/background.png
+	    sudo cp -f /usr/share/grub/themes/StratOS-grub/tokyo-night/theme.txt /usr/share/grub/themes/StratOS-grub/theme.txt
+	    sudo cp -f /usr/share/grub/themes/StratOS-grub/tokyo-night/background.png /usr/share/grub/themes/StratOS-grub/background.png
 	    sudo ln -sf /etc/calamares/branding/tokyonight-dark/stylesheet.qss  /etc/calamares/branding/default/stylesheet.qss  
 	    sudo ln -sf $HOME/.config/starship/tokyonight-dark/starship.toml $HOME/.config/starship.toml 
 	    sudo cp /opt/maneki-neko/src/ui/TokyoNight-Dark/** /opt/maneki-neko/src/ui/
