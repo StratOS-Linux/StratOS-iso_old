@@ -21,7 +21,6 @@ while true; do
 		sudo apt install -y nala
 	    done
 	    echo "\n==> Ubuntu configured successfully."
-	    pkexec sed 's/timeout = 30/timeout = 0/g' -i /bedrock/etc/bedrock.conf
             ;;
         2)
             echo "Bootstrapping Fedora..."
@@ -29,7 +28,6 @@ while true; do
 		pkexec brl remove -d fedora 2>/dev/null
 		pkexec brl fetch fedora
 	    done
-	    pkexec sed 's/timeout = 30/timeout = 0/g' -i /bedrock/etc/bedrock.conf
 	    echo "\n==> Fedora configured successfully."
 	    ;;
        *)

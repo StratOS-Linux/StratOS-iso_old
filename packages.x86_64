@@ -6,6 +6,7 @@ archlinux-keyring
 # b43-fwcutter
 base
 base-devel
+bat
 bind
 bibata-cursor-theme
 broadcom-wl
@@ -18,7 +19,7 @@ chromium
 # cryptsetup
 # darkhttpd
 dbus
-ddrescue
+# ddrescue
 dhclient
 dhcpcd
 dialog
@@ -33,9 +34,12 @@ efibootmgr
 emacs
 ethtool
 exfatprogs
+eza
 f2fs-tools
 fatresize
-fsarchiver
+fd
+# fsarchiver
+fzf
 git
 
 # GNOME-related packages
@@ -43,7 +47,7 @@ git
 gdm
 gnome-backgrounds
 gnome-characters
-gnome-color-manager
+# gnome-color-manager
 gnome-control-center
 gnome-font-viewer
 gnome-keyring
@@ -66,9 +70,9 @@ xdg-user-dirs-gtk
 
 
 
-gnu-netcat
+# gnu-netcat
 gpart
-gpm
+# gpm
 gptfdisk
 grab
 grub
@@ -80,16 +84,15 @@ kpmcore
 kvantum
 lazygit
 less
-libfido2
+# libfido2
 libusb-compat
 licenses
 linux
 linux-atm
 linux-firmware
 linux-firmware-marvell
-livecd-sounds
-lsscsi
-# StratOS-repo/calamares
+# livecd-sounds
+# lsscsi
 lvm2
 # lynx
 man-db
@@ -99,17 +102,17 @@ memtest86+
 memtest86+-efi
 mkinitcpio
 mkinitcpio-archiso
-mkinitcpio-nfs-utils
+# mkinitcpio-nfs-utils
 mkinitcpio-openswap
 modemmanager
 mtools
 nano
-nbd
-ndisc6
+# nbd
+# ndisc6
 neovim
 networkmanager
-nfs-utils
-nilfs-utils
+# nfs-utils
+# nilfs-utils
 npm
 ntfs-3g
 # nvme-cli
@@ -117,17 +120,18 @@ open-iscsi
 open-vm-tools
 openssh
 os-prober
-partclone
+# partclone
 # parted
-partimage
-pcsclite
-pv
+# partimage
+# pcsclite
+# pv
 python-pyqt5
 qt5-wayland
 qt6-wayland
 refind
 # reflector
 rock
+ripgrep
 rsync
 sg3_utils
 smartmontools
@@ -137,13 +141,13 @@ starship
 sudo
 syslinux
 systemd-resolvconf
-tcpdump
+# tcpdump
 terminus-font
 testdisk
 # tpm2-tools
 # tpm2-tss
 ttf-jetbrains-mono-nerd
-udftools
+# udftools
 usb_modeswitch
 usbmuxd
 usbutils
