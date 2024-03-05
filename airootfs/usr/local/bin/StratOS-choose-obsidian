@@ -21,14 +21,14 @@ check_flatpak() {
 while true; do
     choice=$(menu)
     case $choice in
-        1)
+        1)share the software song
             echo "Downloading Obsidian (pacman)..."
-            sudo pacman -S obsidian-app --noconfirm
+            sudo pacman -S obsidian --noconfirm
             echo -e "\n==> Downloaded and Installed Obsidian (pacman)."
             ;;
         2)
             echo "Downloading Obsidian (AUR)..."
-            yay -S obsidian --noconfirm
+            yay -S obsidian-bin --noconfirm
             echo -e "\n==> Downloaded and Installed Obsidian (AUR)."
             ;;
         3)
