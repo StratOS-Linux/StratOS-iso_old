@@ -1,13 +1,13 @@
 alsa-utils
 amd-ucode
-arch-install-scripts
-archinstall
+# arch-install-scripts
+# archinstall
 archlinux-keyring
 # b43-fwcutter
 base
 base-devel
 bat
-bind
+# bind
 bibata-cursor-theme
 broadcom-wl
 # btrfs-progs
@@ -41,6 +41,7 @@ fd
 # fsarchiver
 fzf
 git
+github-cli
 
 # GNOME-related packages
 # gnome

@@ -1,5 +1,5 @@
 alias ls='eza --color=always'
-alias rg='rg -i --sort-path'
+alias rg='rg -i --sort path'
 alias grep='grep --color=auto'
 alias neofetch='neofetch --ascii_distro janus'
 alias fetch-arch="sudo brl fetch arch"
