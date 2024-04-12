@@ -1,2 +1,2 @@
 #!/usr/bin/env zsh
-pkexec pacman -S "$1"
+pkexec pacman -S "$1" --noconfirm

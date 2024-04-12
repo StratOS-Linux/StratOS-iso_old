@@ -1,5 +1,5 @@
 #!/bin/bash
-
+./maneki-logo
 menu(){
     dialog --clear --title "Which OnlyOffice do you want?" \
         --menu "Choose one of the following options:" 15 40 3 \

@@ -1,4 +1,5 @@
-#!/bin/bash 
+#!/bin/bash
+./maneki-logo
 menu(){
     dialog --clear --title "Which PDF Viewer do you want?" \
         --menu "Choose one of the following options:" 15 40 4 \

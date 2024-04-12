@@ -1,5 +1,5 @@
 #!/bin/bash
-
+./maneki-logo
 menu_video_players() {
     dialog --clear --backtitle "Video Player Selector" \
         --title "Select a video player" \
