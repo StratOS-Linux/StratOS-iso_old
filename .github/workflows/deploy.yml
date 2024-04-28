@@ -12,17 +12,16 @@ jobs:
       image: docker://archlinux
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up mkarchiso
-        run: | 
-          pacman -Sy sudo archiso --noconfirm
+      - name: Checkout repository using git
+        # uses: actions/checkout@v2
+        run: |
+          pacman -Sy git sudo archiso --noconfirm
+          git clone --depth 1 $GITHUB_WORKSPACE
 
       - name: Build ISO
         id: build_iso
         run: |
-          ISO_NAME=$(./build.sh)
+          ISO_NAME=$(sudo ./build.sh) # admin perms required to mount /proc
           echo "ISO_NAME=$ISO_NAME" >> $GITHUB_ENV
 
       - name: Upload ISO as artifact
