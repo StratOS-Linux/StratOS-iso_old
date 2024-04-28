@@ -31,7 +31,7 @@ dosfstools
 e2fsprogs
 edk2-shell
 efibootmgr
-emacs
+# emacs
 ethtool
 exfatprogs
 eza
@@ -82,12 +82,14 @@ hdparm
 intel-ucode
 iw
 iwd
+kcrash
 kpmcore
 kvantum
 lazygit
 less
 # libfido2
 libusb-compat
+libxpm
 licenses
 linux
 linux-atm
@@ -140,6 +142,7 @@ smartmontools
 sof-firmware
 squashfs-tools
 starship
+stratmacs
 sudo
 syslinux
 systemd-resolvconf
