@@ -1,12 +1,12 @@
 name: Release ISO
 
 on:
-  push:
+ push:
     branches:
       - main
 
 jobs:
-  build:
+ build:
     runs-on: ubuntu-latest
     container:
       image: docker://archlinux
@@ -23,23 +23,31 @@ jobs:
         id: build_iso
         run: |
           ISO_NAME=$(./build.sh)
-          echo "::set-output name=iso_name::$ISO_NAME"
+          echo "ISO_NAME=$ISO_NAME" >> $GITHUB_ENV
 
       - name: Upload ISO as artifact
         uses: actions/upload-artifact@v2
         with:
-          name: StratOS-iso
-          path: output/StratOS-*.iso
+          name: ${{ env.ISO_NAME }}
+          path: output/${{ env.ISO_NAME }}
 
-      - name: Create release
+      - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.sha }}
-          release_name: ${{ steps.build_iso.outputs.iso_name }}
-          body: |
-            Release of the ISO.
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ env.ISO_NAME }}
           draft: false
           prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: output/${{ env.ISO_NAME }}
+          asset_name: ${{ env.ISO_NAME }}
+          asset_content_type: application/octet-stream
