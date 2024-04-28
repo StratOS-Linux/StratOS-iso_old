@@ -16,7 +16,7 @@ jobs:
         # uses: actions/checkout@v2
         run: |
           pacman -Sy git sudo archiso --noconfirm
-          git clone --recurse-submodules https://github.com/zstg/StratOS-iso.git
+          git clone --recurse-submodules https://github.com/zstg/StratOS-iso
 
       - name: Build ISO
         id: build_iso
