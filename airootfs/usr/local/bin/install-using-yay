@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+yay -S "$1"

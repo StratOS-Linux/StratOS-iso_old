@@ -1,17 +1,17 @@
 alsa-utils
 amd-ucode
-arch-install-scripts
-archinstall
+# arch-install-scripts
+# archinstall
 archlinux-keyring
 # b43-fwcutter
 base
 base-devel
 bat
-bind
+# bind
 bibata-cursor-theme
 broadcom-wl
 # btrfs-progs
-calamares
+calamares-git
 ckbcomp
 cmake
 chromium
@@ -31,16 +31,18 @@ dosfstools
 e2fsprogs
 edk2-shell
 efibootmgr
-emacs
+# emacs
 ethtool
 exfatprogs
 eza
 f2fs-tools
 fatresize
 fd
+fish
 # fsarchiver
 fzf
 git
+github-cli
 
 # GNOME-related packages
 # gnome
@@ -80,12 +82,14 @@ hdparm
 intel-ucode
 iw
 iwd
+kcrash
 kpmcore
 kvantum
 lazygit
 less
 # libfido2
 libusb-compat
+libxpm
 licenses
 linux
 linux-atm
@@ -138,6 +142,7 @@ smartmontools
 sof-firmware
 squashfs-tools
 starship
+stratmacs
 sudo
 syslinux
 systemd-resolvconf

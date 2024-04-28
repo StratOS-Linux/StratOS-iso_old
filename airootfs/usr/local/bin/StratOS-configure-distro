@@ -1,11 +1,12 @@
 #!/bin/bash
+
 menu() {
     dialog --clear --backtitle "Distro Selector" \
         --title "Select a distro" \
         --menu "Choose one of the following options:" 15 40 3 \
         1 "Ubuntu" \
         2 "Fedora" \
-        2>&1 >/dev/tty
+        3 "Exit" 2>&1 >/dev/tty
 }
 
 # Made the script more verbose, for the end user.
@@ -15,22 +16,23 @@ while true; do
     case $choice in
         1)
             echo "Bootstrapping Ubuntu..."
-	    until $(which apt); do
-		pkexec brl remove -d ubuntu 2>/dev/null
-		pkexec brl fetch ubuntu 
-		sudo apt install -y nala
-	    done
-	    echo "\n==> Ubuntu configured successfully."
+            until which apt &>/dev/null; do
+                pkexec brl remove -d ubuntu 2>/dev/null
+                pkexec brl fetch ubuntu
+                sudo apt update
+                sudo apt install -y nala
+            done
+            echo -e "\n==> Ubuntu configured successfully."
             ;;
         2)
             echo "Bootstrapping Fedora..."
-	    until $(which dnf); do
-		pkexec brl remove -d fedora 2>/dev/null
-		pkexec brl fetch fedora
-	    done
-	    echo "\n==> Fedora configured successfully."
-	    ;;
-       *)
+            until which dnf &>/dev/null; do
+                pkexec brl remove -d fedora 2>/dev/null
+                pkexec brl fetch fedora
+            done
+            echo -e "\n==> Fedora configured successfully."
+            ;;
+        3)
             echo "Exiting..."
             exit 0
             ;;

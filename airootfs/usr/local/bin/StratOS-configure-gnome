@@ -4,6 +4,7 @@ extensions=(
     blur-my-shell@aunetx
     # burn-my-windows@schneegans.github.com
     dash-to-dock@micxgx.gmail.com
+    places-menu@gnome-shell-extensions.gcampax.github.com
     # forge@jmmaranan.com
     logomenu@aryan_k
     space-bar@luchrioh
