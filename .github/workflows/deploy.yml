@@ -17,7 +17,7 @@ jobs:
 
       - name: Set up mkarchiso
         run: | 
-          pacman -Sy archiso --noconfirm
+          pacman -Sy sudo archiso --noconfirm
 
       - name: Build ISO
         id: build_iso
