@@ -1,12 +1,12 @@
 [submodule "airootfs/usr/share/backgrounds/StratOS"]
 	path = airootfs/usr/share/backgrounds/StratOS
-	url = https://github.com/lugvitc/StratOS-wallpapers
+	url = https://github.com/StratOS-Linux/StratOS-wallpapers
 [submodule "airootfs/opt/maneki-neko"]
 	path = airootfs/opt/maneki-neko
-	url = https://github.com/zstg/stratOS-maneki-neko
+	url = https://github.com/StratOS-Linux/stratOS-maneki-neko
 [submodule "airootfs/etc/calamares"]
 	path = airootfs/etc/calamares
-	url = https://github.com/zstg/StratOS-calamares
+	url = https://github.com/StratOS-Linux/StratOS-calamares
 [submodule "airootfs/etc/skel/.config/nvim"]
 	path = airootfs/etc/skel/.config/nvim
 	url = https://github.com/StratOS-Linux/StratVIM.git
