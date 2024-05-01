@@ -20,6 +20,8 @@ jobs:
       - name: Build ISO
         id: build_iso
         run: |
+          pwd
+          cd StratOS-iso
           export BUILD_DATE=$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)
           sudo chmod +x ./build.sh
           sudo bash ./build.sh # admin perms required to mount /proc
