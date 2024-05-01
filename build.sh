@@ -7,3 +7,4 @@ sudo mkarchiso -v \
      -w output \
      -o output \
      ./
+echo output/*.iso | awk -F/ '{print $NF}'
