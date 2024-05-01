@@ -1,4 +1,4 @@
-name: Release ISO
+name: Build and Release ISO
 
 on:
   push:
@@ -16,34 +16,20 @@ jobs:
       - name: Checkout repository using git
         run: |
           pacman -Sy git sudo archiso --noconfirm
-          git clone --recurse-submodules https://github.com/zstg/StratOS-iso          
-
+          git clone --recurse-submodules https://github.com/zstg/StratOS-iso
+      
       - name: Build ISO
         id: build_iso
         run: |
           cd StratOS-iso
           export BUILD_DATE=$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)
           sudo bash ./build.sh
-
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          echo "::set-output name=date::${BUILD_DATE}"
+      
+      - name: Upload ISO to GitHub Release
+        uses: xresloader/upload-to-github-release@v1
         with:
-          tag_name: ${{ github.sha }}
-          release_name: Release ${{ github.sha }}
-          body: |
-            Release created automatically by GitHub Actions.
+          file: 'StratOS-iso/output/StratOS-${BUILD_DATE}.iso'
+          tags: true
           draft: false
-          prerelease: false
-
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: output/StratOS-${BUILD_DATE}.iso
-          asset_name: StratOS_${BUILD_DATE}.iso
-          asset_content_type: application/octet-stream
+          overwrite: false
