@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Install Archlinux
-        run: curl -L https://github.com/zaoqi/github-actions-archlinux/raw/master/install.sh | sh
+        run: curl -L https://raw.githubusercontent.com/zstg/github-actions-archlinux/master/install.sh | sh
             
       - name: Checkout repository using git
         run: |
