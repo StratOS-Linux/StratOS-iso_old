@@ -1,52 +1,33 @@
 name: Release ISO
 
 on:
- push:
+  push:
     branches:
       - main
+      
+      jobs:
+        build:
+          runs-on: ubuntu-latest
+          container:
+            image: docker://archlinux
+            
+            steps:
+              - name: Checkout repository using git
+                # uses: actions/checkout@v2
+                run: |
+                  pacman -Sy git sudo archiso --noconfirm
+                  git clone --recurse-submodules https://github.com/zstg/StratOS-iso
+              
+              - name: Build ISO
+                id: build_iso
+                run: |
+                  export BUILD_DATE=$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)
+                  sudo ./build.sh # admin perms required to mount /proc
+                  echo "::set-output name=date::${BUILD_DATE}"
 
-jobs:
- build:
-    runs-on: ubuntu-latest
-    container:
-      image: docker://archlinux
-
-    steps:
-      - name: Checkout repository using git
-        # uses: actions/checkout@v2
-        run: |
-          pacman -Sy git sudo archiso --noconfirm
-          git clone --recurse-submodules https://github.com/zstg/StratOS-iso
-
-      - name: Build ISO
-        id: build_iso
-        run: |
-          ISO_NAME=$(sudo ./build.sh) # admin perms required to mount /proc
-          echo "ISO_NAME=$ISO_NAME" >> $GITHUB_ENV
-
-      - name: Upload ISO as artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: ${{ env.ISO_NAME }}
-          path: output/${{ env.ISO_NAME }}
-
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ env.ISO_NAME }}
-          draft: false
-          prerelease: false
-
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: output/${{ env.ISO_NAME }}
-          asset_name: ${{ env.ISO_NAME }}
-          asset_content_type: application/octet-stream
+              - name: Upload 
+              uses: ncipollo/release-action@v1
+              with:
+                artifacts: "output/*.iso"
+                token: ${{ secrets.GITHUB_TOKEN }}
+                tag: ${{ steps.build.outputs.date }}
