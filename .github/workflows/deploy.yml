@@ -4,44 +4,30 @@ on:
   push:
     branches:
       - main
-      
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+    container:
+      image: archlinux/archlinux:latest
+      options: --privileged
+
     steps:
-      - name: Setup archiso
+      - name: Checkout repository using git
+        # uses: actions/checkout@v2
         run: |
-          sudo apt update
-          sudo apt install -y git # podman
-          sudo apt install -y arch-install-scripts bash dosfstools e2fsprogs erofs-utils grub-common grub-efi-amd64-bin libarchive-dev libisoburn-dev mtools squashfs-tools
-          git clone https://github.com/archlinux/archiso 
-          cd archiso
-          make
-          sudo make install-scripts
-          sudo make install-profiles
-          # curl -s https://raw.githubusercontent.com/89luca89/distrobox/main/install | sudo sh
-          # git clone --recurse-submodules https://github.com/zstg/StratOS-iso
-          # distrobox create -i archlinux -n isobuilder -Y
-
-
+          pacman -Sy git sudo archiso --noconfirm
+          git clone --recurse-submodules https://github.com/zstg/StratOS-iso
+      
       - name: Build ISO
         id: build_iso
         run: |
-          git clone --recurse https://github.com/zstg/StratOS-iso
-          cd StratOS-iso
           export BUILD_DATE=$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)
-          #sudo mount -t proc proc /proc
-          #sudo mount -t sysfs sys /sys
-          #sudo mount --rbind /dev /dev
-          #sudo mount --rbind /run /run
-          # sudo pacman -Syy archiso base-devel --noconfirm
-          sudo bash ./build.sh
-          echo "::set-output name=date::${BUILD_DATE}"
+          sudo ./build.sh # admin perms required to mount /proc
+          # echo "::set-output name=date::${BUILD_DATE}"
 
-      - name: Upload 
-        uses: ncipollo/release-action@v1
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
         with:
-          artifacts: "output/*.iso"
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ steps.build_iso.outputs.date }}
+          name: StratOS_${BUILD_DATE}
+          path: output/**.iso
