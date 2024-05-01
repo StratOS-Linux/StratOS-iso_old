@@ -8,10 +8,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: docker://archlinux
-            
     steps:
+      - uses: actions/checkout@v1
+      - name: Install Archlinux
+        run: curl -L https://github.com/zaoqi/github-actions-archlinux/raw/master/install.sh | sh
+            
       - name: Checkout repository using git
         run: |
           pacman -Sy git sudo archiso --noconfirm
