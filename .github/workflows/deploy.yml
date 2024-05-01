@@ -14,7 +14,7 @@ jobs:
         run: |
           # sudo apt -y update
           # sudo apt install sudo
-          curl -L https://raw.githubusercontent.com/zstg/github-actions-archlinux/master/install.sh | sh
+          curl -L https://raw.githubusercontent.com/zstg/github-actions-archlinux/master/install.sh | sudo bash
             
       - name: Checkout repository using git
         run: |
