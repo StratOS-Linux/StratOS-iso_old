@@ -6,30 +6,44 @@ on:
       - main
 
 jobs:
-  build:
+  build_and_release:
     runs-on: ubuntu-latest
-    container:
-      image: archlinux/archlinux:latest
-      options: --privileged
 
     steps:
-      - name: Checkout repository using git
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Arch Linux
         run: |
-          pacman -Sy git sudo archiso --noconfirm
-          git clone --recurse-submodules https://github.com/zstg/StratOS-iso
-      
+          sudo pacman -Sy --noconfirm archiso
+
       - name: Build ISO
         id: build_iso
         run: |
           cd StratOS-iso
           export BUILD_DATE=$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)
-          sudo bash ./build.sh
+          # sudo bash ./build.sh
+          echo "Hi" > output/StratOS-${BUILD_DATE}.iso
           echo "::set-output name=date::${BUILD_DATE}"
-      
-      - name: Upload ISO to GitHub Release
-        uses: xresloader/upload-to-github-release@v1
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: 'StratOS-iso/output/StratOS-${BUILD_DATE}.iso'
-          tags: true
-          draft: false
-          overwrite: false
+          tag_name: v${{ steps.build_iso.outputs.date }}
+          release_name: Release v${{ steps.build_iso.outputs.date }}
+          body: |
+            Describe your release notes here.
+
+      - name: Upload ISO as Release Asset
+        id: upload_asset
+        uses: actions/upload-release-asset@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: StratOS-iso/output/StratOS-${BUILD_DATE}.iso
+          asset_name: StratOS-${BUILD_DATE}.iso
+          asset_content_type: application/octet-stream
