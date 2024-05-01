@@ -6,19 +6,17 @@ on:
       - main
 
 jobs:
-  build_and_release:
+  build:
     runs-on: ubuntu-latest
     container:
-        image: archlinux/archlinux:latest
-        options: --privileged
+      image: archlinux/archlinux:latest
+      options: --privileged
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Arch Linux
+      - name: Checkout repository using git
         run: |
-          sudo pacman -Sy --noconfirm archiso
+          pacman -Sy git sudo archiso --noconfirm
+          git clone --recurse-submodules https://github.com/zstg/StratOS-iso
 
       - name: Build ISO
         id: build_iso
