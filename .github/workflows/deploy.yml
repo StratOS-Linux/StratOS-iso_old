@@ -8,17 +8,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Install Archlinux
-        run: |
-          # sudo apt -y update
-          # sudo apt install sudo
-          curl -L https://raw.githubusercontent.com/zstg/github-actions-archlinux/master/install.sh | sudo bash
+    container:
+      image: docker://archlinux
             
+    steps:
       - name: Checkout repository using git
         run: |
-          # pacman -Sy git sudo archiso --noconfirm
+          pacman -Sy git sudo archiso --noconfirm
           git clone --recurse-submodules https://github.com/zstg/StratOS-iso
               
       - name: Build ISO
@@ -26,11 +22,13 @@ jobs:
         run: |
           cd StratOS-iso
           export BUILD_DATE=$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)
-          sudo mount -t proc proc /__w/StratOS-iso/StratOS-iso/StratOS-iso/output/x86_64/airootfs/proc
+          sudo mount --mkdir -t proc /proc /__w/StratOS-iso/StratOS-iso/StratOS-iso/output/x86_64/airootfs/proc
+          sudo mount --mkdir -t sysfs /sys /__w/StratOS-iso/StratOS-iso/StratOS-iso/output/x86_64/airootfs/sys
+          sudo mount --mkdir --rbind /dev /__w/StratOS-iso/StratOS-iso/StratOS-iso/output/x86_64/airootfs/dev
+          sudo mount --rbind /run /__w/StratOS-iso/StratOS-iso/StratOS-iso/output/x86_64/airootfs/run
           sudo chmod +x ./build.sh
           sudo bash ./build.sh # admin perms required to mount /proc
           echo "::set-output name=date::${BUILD_DATE}"
-
       - name: Upload 
         uses: ncipollo/release-action@v1
         with:
