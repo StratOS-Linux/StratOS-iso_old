@@ -28,7 +28,7 @@ jobs:
       - name: Build ISO
         id: build_iso
         run: |
-          cd StratOS-iso
+          # cd StratOS-iso
           export BUILD_DATE=$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)
           #sudo mount -t proc proc /proc
           #sudo mount -t sysfs sys /sys
