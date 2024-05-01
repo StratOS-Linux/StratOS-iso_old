@@ -23,12 +23,12 @@ jobs:
         run: |
           cd StratOS-iso
           export BUILD_DATE=$(distrobox enter -n isobuilder -- date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)
-          distrobox enter -n isobuilder -- mount -t proc proc /proc
-          distrobox enter -n isobuilder -- mount -t sysfs sys /sys
-          distrobox enter -n isobuilder -- mount --rbind /dev /dev
-          distrobox enter -n isobuilder -- mount --rbind /run /run
-          chmod +x ./build.sh
-          distrobox exec -n isobuilder -- sudo ./build.sh
+          #distrobox enter -n isobuilder -- mount -t proc proc /proc
+          #distrobox enter -n isobuilder -- mount -t sysfs sys /sys
+          #distrobox enter -n isobuilder -- mount --rbind /dev /dev
+          #distrobox enter -n isobuilder -- mount --rbind /run /run
+          #chmod +x ./build.sh
+          distrobox exec -n isobuilder -- sudo bash ./build.sh
           echo "::set-output name=date::${BUILD_DATE}"
 
       - name: Upload 
