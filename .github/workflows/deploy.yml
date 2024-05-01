@@ -28,6 +28,7 @@ jobs:
           #distrobox enter -n isobuilder -- mount --rbind /dev /dev
           #distrobox enter -n isobuilder -- mount --rbind /run /run
           #chmod +x ./build.sh
+          distrobox enter -n isobuilder -- sudo pacman -Syy archiso base-devel --noconfirm
           distrobox enter -n isobuilder -- sudo bash ./build.sh
           echo "::set-output name=date::${BUILD_DATE}"
 
