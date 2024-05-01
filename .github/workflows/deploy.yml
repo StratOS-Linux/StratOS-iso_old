@@ -16,7 +16,7 @@ jobs:
           sudo apt install -y git podman 
           curl -s https://raw.githubusercontent.com/89luca89/distrobox/main/install | sudo sh
           git clone --recurse-submodules https://github.com/zstg/StratOS-iso
-          distrobox create -i archlinux -n isobuilder
+          distrobox create -i archlinux -n isobuilder -Y
 
       - name: Build ISO
         id: build_iso
