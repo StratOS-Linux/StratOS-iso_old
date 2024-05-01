@@ -8,30 +8,31 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: docker://archlinux
-            
+    
     steps:
-      - name: Checkout repository using git
+      - name: Setup distrobox
         run: |
-          pacman -Sy git sudo archiso --noconfirm
+          sudo apt update
+          sudo apt install -y git podman distrobox
           git clone --recurse-submodules https://github.com/zstg/StratOS-iso
-              
+          distrobox create -i archlinux -n isobuilder
+
       - name: Build ISO
         id: build_iso
         run: |
           cd StratOS-iso
-          export BUILD_DATE=$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)
-          sudo mount --mkdir -t proc /proc /__w/StratOS-iso/StratOS-iso/StratOS-iso/output/x86_64/airootfs/proc
-          sudo mount --mkdir -t sysfs /sys /__w/StratOS-iso/StratOS-iso/StratOS-iso/output/x86_64/airootfs/sys
-          sudo mount --mkdir --rbind /dev /__w/StratOS-iso/StratOS-iso/StratOS-iso/output/x86_64/airootfs/dev
-          sudo mount --rbind /run /__w/StratOS-iso/StratOS-iso/StratOS-iso/output/x86_64/airootfs/run
-          sudo chmod +x ./build.sh
-          sudo bash ./build.sh # admin perms required to mount /proc
+          export BUILD_DATE=$(distrobox exec -n isobuilder -- date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)
+          distrobox exec -n isobuilder -- mount -t proc proc /proc
+          distrobox exec -n isobuilder -- mount -t sysfs sys /sys
+          distrobox exec -n isobuilder -- mount --rbind /dev /dev
+          distrobox exec -n isobuilder -- mount --rbind /run /run
+          chmod +x ./build.sh
+          distrobox exec -n isobuilder -- sudo ./build.sh
           echo "::set-output name=date::${BUILD_DATE}"
+
       - name: Upload 
         uses: ncipollo/release-action@v1
         with:
           artifacts: "output/*.iso"
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ steps.build.outputs.date }}
+          tag: ${{ steps.build_iso.outputs.date }}
