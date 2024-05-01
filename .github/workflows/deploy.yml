@@ -18,7 +18,7 @@ jobs:
             
       - name: Checkout repository using git
         run: |
-          pacman -Sy git sudo archiso --noconfirm
+          # pacman -Sy git sudo archiso --noconfirm
           git clone --recurse-submodules https://github.com/zstg/StratOS-iso
               
       - name: Build ISO
