@@ -16,12 +16,12 @@ jobs:
       - name: Checkout repository using git
         run: |
           pacman -Sy git sudo archiso --noconfirm
-          git clone --recurse-submodules https://github.com/zstg/StratOS-iso
-          cd StratOS-iso
+          git clone --recurse-submodules https://github.com/zstg/StratOS-iso          
 
       - name: Build ISO
         id: build_iso
         run: |
+          cd StratOS-iso
           export BUILD_DATE=$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)
           sudo bash ./build.sh
 
