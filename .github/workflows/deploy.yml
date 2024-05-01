@@ -5,29 +5,28 @@ on:
     branches:
       - main
       
-      jobs:
-        build:
-          runs-on: ubuntu-latest
-          container:
-            image: docker://archlinux
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: docker://archlinux
             
-            steps:
-              - name: Checkout repository using git
-                # uses: actions/checkout@v2
-                run: |
-                  pacman -Sy git sudo archiso --noconfirm
-                  git clone --recurse-submodules https://github.com/zstg/StratOS-iso
+    steps:
+      - name: Checkout repository using git
+        run: |
+          pacman -Sy git sudo archiso --noconfirm
+          git clone --recurse-submodules https://github.com/zstg/StratOS-iso
               
-              - name: Build ISO
-                id: build_iso
-                run: |
-                  export BUILD_DATE=$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)
-                  sudo ./build.sh # admin perms required to mount /proc
-                  echo "::set-output name=date::${BUILD_DATE}"
+      - name: Build ISO
+        id: build_iso
+        run: |
+          export BUILD_DATE=$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)
+          sudo ./build.sh # admin perms required to mount /proc
+          echo "::set-output name=date::${BUILD_DATE}"
 
-              - name: Upload 
-              uses: ncipollo/release-action@v1
-              with:
-                artifacts: "output/*.iso"
-                token: ${{ secrets.GITHUB_TOKEN }}
-                tag: ${{ steps.build.outputs.date }}
+      - name: Upload 
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "output/*.iso"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.build.outputs.date }}
