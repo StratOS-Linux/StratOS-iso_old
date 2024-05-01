@@ -46,6 +46,7 @@ jobs:
         uses: actions/upload-release-asset@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BUILD_DATE: ${{secrets.BUILD_DATE}}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: StratOS-iso/output/StratOS-${{ env.BUILD_DATE }}.iso
