@@ -10,15 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Setup distrobox
+      - name: Setup archiso
         run: |
           sudo apt update
-          sudo apt install -y git podman 
+          sudo apt install -y git # podman
           sudo apt install -y arch-install-scripts bash dosfstools e2fsprogs erofs-utils grub-common grub-efi-amd64-bin libarchive-dev libisoburn-dev mtools squashfs-tools
           git clone https://github.com/archlinux/archiso 
           cd archiso
           make
-          make install
+          sudo make install
           # curl -s https://raw.githubusercontent.com/89luca89/distrobox/main/install | sudo sh
           # git clone --recurse-submodules https://github.com/zstg/StratOS-iso
           # distrobox create -i archlinux -n isobuilder -Y
