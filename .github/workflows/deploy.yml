@@ -14,21 +14,36 @@ jobs:
 
     steps:
       - name: Checkout repository using git
-        # uses: actions/checkout@v2
         run: |
           pacman -Sy git sudo archiso --noconfirm
           git clone --recurse-submodules https://github.com/zstg/StratOS-iso
-      
+          cd StratOS-iso
+
       - name: Build ISO
         id: build_iso
         run: |
-          cd StratOS-iso
           export BUILD_DATE=$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)
-          sudo bash ./build.sh # admin perms required to mount /proc
-          # echo "::set-output name=date::${BUILD_DATE}"
+          sudo bash ./build.sh
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: StratOS_${BUILD_DATE}
-          path: output/**.iso
+          tag_name: ${{ github.sha }}
+          release_name: Release ${{ github.sha }}
+          body: |
+            Release created automatically by GitHub Actions.
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: output/StratOS_${BUILD_DATE}.iso
+          asset_name: StratOS_${BUILD_DATE}.iso
+          asset_content_type: application/octet-stream
