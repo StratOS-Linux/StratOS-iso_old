@@ -18,7 +18,8 @@ jobs:
           git clone https://github.com/archlinux/archiso 
           cd archiso
           make
-          sudo make install
+          sudo make install-scripts
+          sudo make install-profiles
           # curl -s https://raw.githubusercontent.com/89luca89/distrobox/main/install | sudo sh
           # git clone --recurse-submodules https://github.com/zstg/StratOS-iso
           # distrobox create -i archlinux -n isobuilder -Y
