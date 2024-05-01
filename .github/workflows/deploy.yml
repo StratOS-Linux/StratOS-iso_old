@@ -21,6 +21,7 @@ jobs:
         id: build_iso
         run: |
           export BUILD_DATE=$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)
+          sudo chmod +x ./build.sh
           sudo bash ./build.sh # admin perms required to mount /proc
           echo "::set-output name=date::${BUILD_DATE}"
 
