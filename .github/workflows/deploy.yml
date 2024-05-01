@@ -13,7 +13,8 @@ jobs:
       - name: Setup distrobox
         run: |
           sudo apt update
-          sudo apt install -y git podman distrobox
+          sudo apt install -y git podman 
+          curl -s https://raw.githubusercontent.com/89luca89/distrobox/main/install | sudo sh
           git clone --recurse-submodules https://github.com/zstg/StratOS-iso
           distrobox create -i archlinux -n isobuilder
 
