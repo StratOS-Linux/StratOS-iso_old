@@ -28,7 +28,7 @@ jobs:
           #distrobox enter -n isobuilder -- mount --rbind /dev /dev
           #distrobox enter -n isobuilder -- mount --rbind /run /run
           #chmod +x ./build.sh
-          distrobox exec -n isobuilder -- sudo bash ./build.sh
+          distrobox enter -n isobuilder -- sudo bash ./build.sh
           echo "::set-output name=date::${BUILD_DATE}"
 
       - name: Upload 
