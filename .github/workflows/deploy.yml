@@ -36,8 +36,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ steps.build_iso.outputs.date }}
-          release_name: v${{ steps.build_iso.outputs.date }}
+          tag_name: v${{ env.BUILD_DATE }}
+          release_name: v${{ env.BUILD_DATE }}
           body: |
             Automated release powered by GitHub Actions.
 
