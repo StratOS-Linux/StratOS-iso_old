@@ -11,11 +11,14 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Install Archlinux
-        run: curl -L https://raw.githubusercontent.com/zstg/github-actions-archlinux/master/install.sh | sh
+        run: |
+          # sudo apt -y update
+          # sudo apt install sudo
+          curl -L https://raw.githubusercontent.com/zstg/github-actions-archlinux/master/install.sh | sh
             
       - name: Checkout repository using git
         run: |
-          sudo pacman -Sy git sudo archiso --noconfirm
+          pacman -Sy git sudo archiso --noconfirm
           git clone --recurse-submodules https://github.com/zstg/StratOS-iso
               
       - name: Build ISO
