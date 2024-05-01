@@ -14,22 +14,27 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y git podman 
-          curl -s https://raw.githubusercontent.com/89luca89/distrobox/main/install | sudo sh
-          git clone --recurse-submodules https://github.com/zstg/StratOS-iso
-          distrobox create -i archlinux -n isobuilder -Y
+          sudo apt install -y arch-install-scripts bash dosfstools e2fsprogs erofs-utils grub-common grub-efi-amd64-bin libarchive-dev libisoburn-dev mtools squashfs-tools
+          git clone https://github.com/archlinux/archiso 
+          cd archiso
+          make
+          make install
+          # curl -s https://raw.githubusercontent.com/89luca89/distrobox/main/install | sudo sh
+          # git clone --recurse-submodules https://github.com/zstg/StratOS-iso
+          # distrobox create -i archlinux -n isobuilder -Y
+
 
       - name: Build ISO
         id: build_iso
         run: |
           cd StratOS-iso
-          export BUILD_DATE=$(distrobox enter -n isobuilder -- date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)
-          #distrobox enter -n isobuilder -- mount -t proc proc /proc
-          #distrobox enter -n isobuilder -- mount -t sysfs sys /sys
-          #distrobox enter -n isobuilder -- mount --rbind /dev /dev
-          #distrobox enter -n isobuilder -- mount --rbind /run /run
-          #chmod +x ./build.sh
-          distrobox enter -n isobuilder -- sudo pacman -Syy archiso base-devel --noconfirm
-          distrobox enter -n isobuilder -- sudo bash ./build.sh
+          export BUILD_DATE=$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)
+          #sudo mount -t proc proc /proc
+          #sudo mount -t sysfs sys /sys
+          #sudo mount --rbind /dev /dev
+          #sudo mount --rbind /run /run
+          # sudo pacman -Syy archiso base-devel --noconfirm
+          sudo bash ./build.sh
           echo "::set-output name=date::${BUILD_DATE}"
 
       - name: Upload 
